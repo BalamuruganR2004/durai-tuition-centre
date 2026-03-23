@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Durai Tuition Centre</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --navy:#0d1b3e;--navy2:#142250;--navy3:#1a2d6b;
+  --blue:#1e6fff;--blue2:#4d8fff;--blue-light:#e8f0ff;
+  --white:#ffffff;--bg:#f0f4ff;--bg2:#e4eafb;
+  --text:#0d1b3e;--text2:#4a5568;--text3:#8492a6;
+  --green:#00c48c;--green-bg:#e6faf5;
+  --amber:#f59e0b;--amber-bg:#fff8e1;
+  --red:#ef4444;--red-bg:#fff0f0;
+  --purple:#7c3aed;--purple-bg:#f3f0ff;
+  --border:#dde3f0;--border2:#c8d0e7;
+  --r:12px;--r-sm:8px;--r-lg:18px;--r-xl:24px;
+  --shadow:0 2px 12px rgba(13,27,62,.08);
+  --shadow-lg:0 8px 32px rgba(13,27,62,.14);
+}
+html,body{height:100%;overflow:hidden;background:var(--bg)}
+body{font-family:'Inter',sans-serif;font-size:14px;color:var(--text);line-height:1.5}
+
+/* ── LAYOUT ─────────────────────────────── */
+#app{display:flex;flex-direction:column;height:100vh;max-width:480px;margin:0 auto;background:var(--white);position:relative;overflow:hidden;box-shadow:0 0 60px rgba(13,27,62,.15)}
+
+/* ── LOGIN ──────────────────────────────── */
+#login{display:flex;flex-direction:column;height:100%;background:var(--navy);position:relative;overflow:hidden}
+.login-wave{position:absolute;bottom:0;left:0;right:0;height:55%;background:var(--white);border-radius:32px 32px 0 0}
+.login-top{padding:48px 28px 0;position:relative;z-index:2}
+.login-logo{width:56px;height:56px;background:var(--blue);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.login-logo svg{width:28px;height:28px;fill:white}
+.login-top h1{font-size:26px;font-weight:800;color:white;line-height:1.2;margin-bottom:6px}
+.login-top p{font-size:14px;color:rgba(255,255,255,.6)}
+.login-tags{display:flex;gap:6px;margin-top:14px;flex-wrap:wrap}
+.login-tag{padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.85)}
+.login-form-wrap{position:relative;z-index:2;padding:32px 24px 24px;background:var(--white);border-radius:32px 32px 0 0;margin-top:auto;flex-shrink:0}
+.login-form-wrap h2{font-size:20px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.login-form-wrap p{font-size:13px;color:var(--text2);margin-bottom:22px}
+.role-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;background:var(--bg);border-radius:10px;padding:3px;margin-bottom:20px}
+.role-tab{padding:7px 4px;border-radius:7px;border:none;background:none;font-family:inherit;font-size:12px;font-weight:500;color:var(--text2);cursor:pointer;transition:.15s;text-align:center}
+.role-tab.active{background:var(--white);color:var(--blue);font-weight:600;box-shadow:var(--shadow)}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:12px;font-weight:600;color:var(--text2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.4px}
+.field input{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:12px 14px;font-family:inherit;font-size:14px;color:var(--text);outline:none;transition:.15s}
+.field input:focus{border-color:var(--blue);background:white;box-shadow:0 0 0 3px rgba(30,111,255,.1)}
+.btn-signin{width:100%;background:var(--blue);color:white;border:none;border-radius:var(--r-sm);padding:14px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;transition:.15s;margin-top:4px;letter-spacing:.2px}
+.btn-signin:active{transform:scale(.98)}
+.login-hint{text-align:center;font-size:12px;color:var(--text3);margin-top:12px}
+
+/* ── TOPBAR ──────────────────────────────── */
+#topbar{background:var(--navy);padding:14px 20px 14px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:relative;z-index:10}
+.tb-left{display:flex;align-items:center;gap:10px}
+.tb-menu{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.1);border:none;color:white;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+.tb-menu svg{width:18px;height:18px;stroke:white;fill:none;stroke-width:2;stroke-linecap:round}
+.tb-title{font-size:15px;font-weight:700;color:white}
+.tb-right{display:flex;align-items:center;gap:8px}
+.tb-avatar{width:34px;height:34px;border-radius:50%;background:var(--blue);border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:white;cursor:pointer;flex-shrink:0}
+.tb-notif{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.1);border:none;color:white;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative}
+.tb-notif svg{width:18px;height:18px;stroke:white;fill:none;stroke-width:2}
+.notif-dot{position:absolute;top:6px;right:6px;width:8px;height:8px;background:#ef4444;border-radius:50%;border:2px solid var(--navy)}
+
+/* ── BOTTOM NAV ──────────────────────────── */
+#bottom-nav{background:var(--white);border-top:1px solid var(--border);display:flex;padding:8px 4px 12px;flex-shrink:0;position:relative;z-index:10}
+.bn-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:6px 4px;border-radius:10px;transition:.15s;border:none;background:none;font-family:inherit}
+.bn-item svg{width:22px;height:22px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:.15s}
+.bn-item span{font-size:10px;font-weight:500;color:var(--text3);transition:.15s}
+.bn-item.active svg{stroke:var(--blue)}
+.bn-item.active span{color:var(--blue);font-weight:700}
+.bn-active-pill{position:absolute;top:0;height:3px;background:var(--blue);border-radius:0 0 3px 3px;transition:left .25s ease,width .25s ease}
+
+/* ── SCROLLABLE PAGE ─────────────────────── */
+#page{flex:1;overflow-y:auto;overflow-x:hidden;background:var(--bg);position:relative}
+#page::-webkit-scrollbar{display:none}
+
+/* ── DRAWER (sidebar) ────────────────────── */
+#drawer{position:absolute;top:0;bottom:0;left:0;width:82%;max-width:300px;background:var(--navy);z-index:50;transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column}
+#drawer.open{transform:translateX(0)}
+#drawer-overlay{position:absolute;inset:0;background:rgba(0,0,0,.5);z-index:40;opacity:0;pointer-events:none;transition:opacity .28s}
+#drawer-overlay.show{opacity:1;pointer-events:all}
+.drawer-head{padding:28px 20px 20px;border-bottom:1px solid rgba(255,255,255,.1)}
+.drawer-user{display:flex;align-items:center;gap:12px}
+.drawer-av{width:46px;height:46px;border-radius:14px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:white;flex-shrink:0}
+.drawer-name{font-size:15px;font-weight:700;color:white}
+.drawer-role{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
+.drawer-nav{flex:1;overflow-y:auto;padding:12px 0}
+.drawer-section{font-size:10px;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.8px;padding:12px 20px 4px}
+.drawer-item{display:flex;align-items:center;gap:12px;padding:11px 20px;cursor:pointer;transition:.15s;border:none;background:none;width:100%;text-align:left;font-family:inherit}
+.drawer-item:hover{background:rgba(255,255,255,.06)}
+.drawer-item.active{background:rgba(30,111,255,.2)}
+.drawer-item svg{width:18px;height:18px;stroke:rgba(255,255,255,.5);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.drawer-item.active svg{stroke:var(--blue2)}
+.drawer-item span{font-size:13px;font-weight:500;color:rgba(255,255,255,.6)}
+.drawer-item.active span{color:white;font-weight:600}
+.drawer-footer{padding:16px 20px 28px;border-top:1px solid rgba(255,255,255,.1)}
+.drawer-logout{display:flex;align-items:center;gap:10px;cursor:pointer;padding:8px 0;border:none;background:none;font-family:inherit}
+.drawer-logout svg{width:18px;height:18px;stroke:rgba(255,255,255,.4);fill:none;stroke-width:2;stroke-linecap:round}
+.drawer-logout span{font-size:13px;color:rgba(255,255,255,.4);font-weight:500}
+
+/* ── PAGE CONTENT ────────────────────────── */
+.page-pad{padding:16px}
+
+/* ── STATS STRIP ─────────────────────────── */
+.stats-scroll{display:flex;gap:10px;overflow-x:auto;padding:16px 16px 4px;scrollbar-width:none}
+.stats-scroll::-webkit-scrollbar{display:none}
+.stat-chip{background:white;border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;flex-shrink:0;min-width:110px;box-shadow:var(--shadow)}
+.stat-chip .sc-val{font-size:22px;font-weight:800;color:var(--navy);line-height:1}
+.stat-chip .sc-lbl{font-size:11px;color:var(--text2);margin-top:4px;font-weight:500}
+.stat-chip .sc-bar{height:3px;border-radius:2px;margin-top:8px;background:var(--border)}
+.stat-chip .sc-fill{height:100%;border-radius:2px;transition:width 1s ease}
+
+/* ── SECTION HEADER ─────────────────────── */
+.sec-head{display:flex;align-items:center;justify-content:space-between;margin:0 16px 10px}
+.sec-head h3{font-size:14px;font-weight:700;color:var(--navy)}
+.sec-head a{font-size:12px;color:var(--blue);font-weight:600;cursor:pointer;border:none;background:none;font-family:inherit}
+
+/* ── CARDS ───────────────────────────────── */
+.card{background:white;border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin:0 16px 10px;box-shadow:var(--shadow)}
+.card-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.card-row h4{font-size:13px;font-weight:700;color:var(--navy)}
+
+/* ── STUDENT ROW ─────────────────────────── */
+.stu-row{display:flex;align-items:center;gap:12px;padding:10px 16px;background:white;border-bottom:1px solid var(--bg);cursor:pointer;transition:.15s;active:background:var(--bg)}
+.stu-row:last-child{border-bottom:none}
+.stu-av{width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:white;flex-shrink:0}
+.stu-info{flex:1;min-width:0}
+.stu-name{font-size:13px;font-weight:600;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stu-sub{font-size:11px;color:var(--text2);margin-top:1px}
+.stu-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+
+/* ── BADGE ───────────────────────────────── */
+.badge{display:inline-flex;align-items:center;padding:3px 8px;border-radius:20px;font-size:11px;font-weight:600}
+.b-green{background:var(--green-bg);color:#059669}
+.b-amber{background:var(--amber-bg);color:#b45309}
+.b-red{background:var(--red-bg);color:#dc2626}
+.b-blue{background:var(--blue-light);color:#1d4ed8}
+.b-purple{background:var(--purple-bg);color:#6d28d9}
+.b-navy{background:rgba(13,27,62,.08);color:var(--navy)}
+.b-cbse{background:#e0edff;color:#1d4ed8}
+.b-intl{background:#ede9fe;color:#6d28d9}
+.b-state{background:#dcfce7;color:#059669}
+
+/* ── BUTTON ──────────────────────────────── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 18px;border-radius:var(--r-sm);font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:.15s}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--blue);color:white}
+.btn-secondary{background:var(--bg);color:var(--text);border:1px solid var(--border)}
+.btn-danger{background:var(--red-bg);color:var(--red);border:1px solid rgba(239,68,68,.2)}
+.btn-success{background:var(--green-bg);color:#059669;border:1px solid rgba(0,196,140,.2)}
+.btn-sm{padding:7px 13px;font-size:12px}
+.btn-xs{padding:5px 10px;font-size:11px}
+.btn-full{width:100%}
+
+/* ── PROGRESS BAR ────────────────────────── */
+.prog{height:6px;background:var(--bg2);border-radius:3px;overflow:hidden}
+.prog-fill{height:100%;border-radius:3px;transition:width .8s ease}
+.pf-blue{background:var(--blue)}.pf-green{background:var(--green)}.pf-amber{background:var(--amber)}.pf-red{background:var(--red)}
+
+/* ── INPUT / SELECT ──────────────────────── */
+.inp{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:11px 14px;font-family:inherit;font-size:13px;color:var(--text);outline:none;transition:.15s}
+.inp:focus{border-color:var(--blue);background:white;box-shadow:0 0 0 3px rgba(30,111,255,.08)}
+.inp-label{font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.4px;margin-bottom:5px;display:block}
+.field-grp{margin-bottom:14px}
+
+/* ── ATT GRID ────────────────────────────── */
+.att-card{background:white;border:1.5px solid var(--border);border-radius:var(--r);padding:12px;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;box-shadow:var(--shadow)}
+.att-btns{display:flex;gap:5px}
+.att-btn{width:32px;height:32px;border-radius:8px;border:1.5px solid var(--border);background:none;cursor:pointer;font-size:13px;font-weight:700;transition:.15s;display:flex;align-items:center;justify-content:center}
+.att-btn.P{background:var(--green-bg);border-color:var(--green);color:#059669}
+.att-btn.A{background:var(--red-bg);border-color:var(--red);color:var(--red)}
+.att-btn.L{background:var(--amber-bg);border-color:var(--amber);color:#b45309}
+
+/* ── CLASS CARD ──────────────────────────── */
+.cls-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:0 16px}
+.cls-card{background:white;border:1.5px solid var(--border);border-radius:var(--r);padding:12px 10px;text-align:center;cursor:pointer;transition:.15s;box-shadow:var(--shadow)}
+.cls-card:active{transform:scale(.97)}
+.cls-card.cbse{border-top:3px solid var(--blue)}
+.cls-card.intl{border-top:3px solid var(--purple)}
+.cls-card.state{border-top:3px solid var(--green)}
+.cls-num{font-size:18px;font-weight:800;color:var(--navy)}
+.cls-lbl{font-size:10px;font-weight:500;color:var(--text2);margin-top:2px}
+.cls-cnt{font-size:10px;color:var(--text3);margin-top:5px}
+
+/* ── SYLLABUS FILTER ─────────────────────── */
+.syl-bar{display:flex;gap:6px;overflow-x:auto;padding:0 16px 0;scrollbar-width:none;margin-bottom:12px}
+.syl-bar::-webkit-scrollbar{display:none}
+.syl-btn{padding:6px 14px;border-radius:20px;border:1.5px solid var(--border);background:white;font-family:inherit;font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;white-space:nowrap;transition:.15s;flex-shrink:0}
+.syl-btn.active-all{border-color:var(--blue);background:var(--blue-light);color:#1d4ed8}
+.syl-btn.active-cbse{border-color:var(--blue);background:#e0edff;color:#1d4ed8}
+.syl-btn.active-intl{border-color:var(--purple);background:#ede9fe;color:#6d28d9}
+.syl-btn.active-state{border-color:var(--green);background:#dcfce7;color:#059669}
+
+/* ── TIMELINE ────────────────────────────── */
+.timeline{padding:0 16px}
+.tl-item{display:flex;gap:12px;padding-bottom:16px;position:relative}
+.tl-item::before{content:'';position:absolute;left:15px;top:28px;bottom:0;width:1px;background:var(--border)}
+.tl-item:last-child::before{display:none}
+.tl-dot{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px}
+.tl-body{flex:1;padding-top:4px}
+.tl-title{font-size:13px;font-weight:600;color:var(--navy)}
+.tl-desc{font-size:12px;color:var(--text2);margin-top:2px}
+.tl-time{font-size:11px;color:var(--text3);margin-top:3px}
+
+/* ── WA LOG ──────────────────────────────── */
+.wa-item{background:white;border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;margin-bottom:8px;border-left:3px solid var(--green)}
+.wa-to{font-size:12px;font-weight:600;color:var(--green);margin-bottom:4px}
+.wa-msg{font-size:12px;color:var(--text);line-height:1.4}
+.wa-foot{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+.wa-time{font-size:11px;color:var(--text3)}
+.wa-stat{font-size:11px;font-weight:600;color:var(--green)}
+
+/* ── RESULT CARD ─────────────────────────── */
+.result-card{background:white;border:1px solid var(--border);border-radius:var(--r);padding:16px;text-align:center;box-shadow:var(--shadow)}
+.result-score{font-size:34px;font-weight:800;line-height:1}
+.result-grade{font-size:14px;font-weight:700;margin-top:4px}
+.result-info{font-size:11px;color:var(--text2);margin-top:4px}
+
+/* ── FEE CARD ────────────────────────────── */
+.fee-row{background:white;border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:8px;box-shadow:var(--shadow)}
+.fee-row .fr-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.fee-row .fr-name{font-size:13px;font-weight:700;color:var(--navy)}
+.fee-row .fr-amt{font-size:18px;font-weight:800;color:var(--navy)}
+.fee-row .fr-sub{font-size:11px;color:var(--text2);margin-top:2px}
+
+/* ── TABS ────────────────────────────────── */
+.tabs{display:flex;background:var(--bg);border-radius:10px;padding:3px;margin:0 16px 14px;gap:3px}
+.tab{flex:1;padding:8px 4px;border-radius:7px;border:none;background:none;font-family:inherit;font-size:12px;font-weight:500;color:var(--text2);cursor:pointer;transition:.15s;text-align:center}
+.tab.active{background:white;color:var(--blue);font-weight:700;box-shadow:var(--shadow)}
+
+/* ── MARKS INPUT ─────────────────────────── */
+.marks-in{width:56px;background:var(--bg);border:1.5px solid var(--border);border-radius:6px;padding:6px 8px;font-family:inherit;font-size:12px;text-align:center;color:var(--text);outline:none}
+.marks-in:focus{border-color:var(--blue);background:white}
+
+/* ── MODAL (bottom sheet) ────────────────── */
+.sheet-bg{position:absolute;inset:0;background:rgba(13,27,62,.55);z-index:60;opacity:0;pointer-events:none;transition:opacity .25s;display:flex;align-items:flex-end}
+.sheet-bg.show{opacity:1;pointer-events:all}
+.sheet{background:white;border-radius:20px 20px 0 0;padding:20px 20px 32px;width:100%;max-height:85%;overflow-y:auto;transform:translateY(100%);transition:transform .28s cubic-bezier(.4,0,.2,1)}
+.sheet-bg.show .sheet{transform:translateY(0)}
+.sheet-handle{width:36px;height:4px;background:var(--border2);border-radius:2px;margin:0 auto 16px}
+.sheet-title{font-size:17px;font-weight:800;color:var(--navy);margin-bottom:16px}
+.sheet-close{float:right;background:var(--bg);border:none;border-radius:50%;width:28px;height:28px;font-size:16px;cursor:pointer;color:var(--text2);margin-top:-4px}
+
+/* ── TOAST ───────────────────────────────── */
+.toast{position:absolute;bottom:80px;left:16px;right:16px;background:var(--navy);color:white;padding:12px 16px;border-radius:var(--r-sm);font-size:13px;font-weight:500;z-index:99;animation:slideup .3s ease;box-shadow:var(--shadow-lg)}
+@keyframes slideup{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── AI CHAT ─────────────────────────────── */
+.ai-msg{max-width:88%;padding:10px 13px;border-radius:14px;font-size:13px;line-height:1.5;margin-bottom:8px}
+.ai-user{background:var(--blue);color:white;align-self:flex-end;border-radius:14px 14px 2px 14px;margin-left:auto}
+.ai-bot{background:white;color:var(--navy);align-self:flex-start;border-radius:14px 14px 14px 2px;border:1px solid var(--border)}
+.ai-wrap{display:flex;flex-direction:column;padding:12px 16px;gap:0}
+
+/* ── SEARCH ──────────────────────────────── */
+.search-bar{display:flex;align-items:center;background:white;border:1.5px solid var(--border);border-radius:var(--r-sm);padding:0 12px;margin:0 16px 12px;gap:8px}
+.search-bar svg{width:16px;height:16px;stroke:var(--text3);fill:none;stroke-width:2;flex-shrink:0}
+.search-bar input{flex:1;border:none;background:none;padding:10px 0;font-family:inherit;font-size:13px;color:var(--text);outline:none}
+
+/* ── DONUT ───────────────────────────────── */
+.donut-wrap{display:flex;align-items:center;gap:16px}
+.leg-row{display:flex;align-items:center;gap:7px;font-size:12px;margin-bottom:6px}
+.leg-dot{width:9px;height:9px;border-radius:50%}
+
+/* ── UPLOAD ZONE ─────────────────────────── */
+.upload-z{border:2px dashed var(--border2);border-radius:var(--r);padding:28px 16px;text-align:center;background:var(--bg);cursor:pointer;transition:.15s;margin:0 16px 12px}
+.upload-z:active{border-color:var(--blue);background:var(--blue-light)}
+
+/* ── TIMETABLE ───────────────────────────── */
+.ttbl{width:100%;border-collapse:collapse;font-size:11px}
+.ttbl th{background:var(--navy);color:rgba(255,255,255,.8);padding:8px 6px;text-align:center;font-size:10px;text-transform:uppercase;letter-spacing:.3px}
+.ttbl td{border:1px solid var(--border);padding:4px;text-align:center;vertical-align:middle}
+.tt-cell{border-radius:5px;padding:4px 3px;font-size:10px;font-weight:600}
+.tt-cell.cbse{background:#e0edff;color:#1d4ed8}
+.tt-cell.intl{background:#ede9fe;color:#6d28d9}
+.tt-cell.state{background:#dcfce7;color:#059669}
+.tt-teach{font-size:9px;font-weight:400;margin-top:1px;opacity:.8}
+
+/* ── SUMMARY CARDS 3-col ─────────────────── */
+.syl-summary{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:0 16px;margin-bottom:14px}
+.syl-chip{border-radius:var(--r);padding:12px 10px;text-align:center;border:1.5px solid}
+.syl-chip.cbse{background:#e0edff;border-color:#93c5fd}
+.syl-chip.intl{background:#ede9fe;border-color:#c4b5fd}
+.syl-chip.state{background:#dcfce7;border-color:#86efac}
+.syl-chip .sv{font-size:20px;font-weight:800}
+.syl-chip.cbse .sv{color:#1d4ed8}
+.syl-chip.intl .sv{color:#6d28d9}
+.syl-chip.state .sv{color:#059669}
+.syl-chip .sl{font-size:10px;font-weight:500;margin-top:2px}
+.syl-chip.cbse .sl{color:#3b82f6}
+.syl-chip.intl .sl{color:#7c3aed}
+.syl-chip.state .sl{color:#059669}
+
+/* ── BAR CHART ───────────────────────────── */
+.bar-chart{display:flex;flex-direction:column;gap:8px}
+.bar-row{display:flex;align-items:center;gap:8px}
+.bar-lbl{font-size:11px;color:var(--text2);width:80px;text-align:right;flex-shrink:0;font-weight:500}
+.bar-track{flex:1;height:18px;background:var(--bg2);border-radius:4px;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px;display:flex;align-items:center;padding-left:7px;font-size:10px;font-weight:700;color:white;transition:width .9s ease}
+.bf-blue{background:var(--blue)}.bf-green{background:var(--green)}.bf-amber{background:var(--amber)}.bf-red{background:var(--red)}.bf-purple{background:var(--purple)}
+.bar-val{width:32px;font-size:11px;font-weight:600;text-align:right;color:var(--text2)}
+
+/* ── TABLE ───────────────────────────────── */
+.tbl-wrap{overflow-x:auto;margin:0 16px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{background:var(--bg);padding:9px 10px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--text2);white-space:nowrap}
+td{padding:9px 10px;border-bottom:1px solid var(--bg);color:var(--text)}
+tr:last-child td{border-bottom:none}
+
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+<div id="app">
+
+<!-- LOGIN -->
+<div id="login">
+  <div class="login-top">
+    <div class="login-logo">
+      <svg viewBox="0 0 24 24"><path d="M12 3L20 7.5V16.5L12 21L4 16.5V7.5L12 3Z"/><path d="M12 8V16M8 10L12 8L16 10" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round"/></svg>
+    </div>
+    <h1>Durai Tuition<br>Centre</h1>
+    <p>Management System</p>
+    <div class="login-tags">
+      <div class="login-tag">🔵 CBSE</div>
+      <div class="login-tag">🟣 International</div>
+      <div class="login-tag">🟢 State Board</div>
+    </div>
+  </div>
+  <div class="login-form-wrap">
+    <h2>Welcome back</h2>
+    <p>Sign in to your account</p>
+    <div class="role-tabs" id="role-tabs">
+      <button class="role-tab active" onclick="selRole('admin',this)">Admin</button>
+      <button class="role-tab" onclick="selRole('teacher',this)">Teacher</button>
+      <button class="role-tab" onclick="selRole('student',this)">Student</button>
+      <button class="role-tab" onclick="selRole('parent',this)">Parent</button>
+    </div>
+    <div class="field">
+      <label>Username</label>
+      <input type="text" id="uname" value="admin@duraitc.com" placeholder="Enter username">
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" id="upass" value="••••••••" placeholder="Enter password">
+    </div>
+    <button class="btn-signin" onclick="doLogin()">Sign In</button>
+    <p class="login-hint">Select any role and tap Sign In</p>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="main-app" class="hidden" style="display:none;flex-direction:column;height:100%">
+
+  <!-- TOPBAR -->
+  <div id="topbar">
+    <div class="tb-left">
+      <button class="tb-menu" onclick="openDrawer()">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div class="tb-title" id="tb-title">Dashboard</div>
+    </div>
+    <div class="tb-right">
+      <button class="tb-notif" onclick="navTo('notifications')">
+        <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <div class="notif-dot"></div>
+      </button>
+      <div class="tb-avatar" id="tb-av">AD</div>
+    </div>
+  </div>
+
+  <!-- PAGE -->
+  <div id="page"></div>
+
+  <!-- BOTTOM NAV -->
+  <div id="bottom-nav">
+    <div class="bn-active-pill" id="bn-pill" style="left:10%;width:12%"></div>
+    <button class="bn-item active" data-page="dashboard" onclick="navTo('dashboard')">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      <span>Home</span>
+    </button>
+    <button class="bn-item" data-page="students" onclick="navTo('students')">
+      <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <span>Students</span>
+    </button>
+    <button class="bn-item" data-page="attendance" onclick="navTo('attendance')">
+      <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      <span>Attend</span>
+    </button>
+    <button class="bn-item" data-page="fees" onclick="navTo('fees')">
+      <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      <span>Fees</span>
+    </button>
+    <button class="bn-item" data-page="ai-insights" onclick="navTo('ai-insights')">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      <span>AI</span>
+    </button>
+  </div>
+
+</div>
+
+<!-- DRAWER -->
+<div id="drawer-overlay" onclick="closeDrawer()"></div>
+<div id="drawer">
+  <div class="drawer-head">
+    <div class="drawer-user">
+      <div class="drawer-av" id="dr-av">AD</div>
+      <div>
+        <div class="drawer-name" id="dr-name">Admin User</div>
+        <div class="drawer-role" id="dr-role">Administrator</div>
+      </div>
+    </div>
+  </div>
+  <div class="drawer-nav" id="drawer-nav"></div>
+  <div class="drawer-footer">
+    <button class="drawer-logout" onclick="doLogout()">
+      <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      <span>Sign out</span>
+    </button>
+  </div>
+</div>
+
+<!-- BOTTOM SHEET MODAL -->
+<div class="sheet-bg" id="sheet-bg" onclick="closeSheet(event)">
+  <div class="sheet" id="sheet">
+    <div class="sheet-handle"></div>
+    <button class="sheet-close" onclick="closeSheet()">✕</button>
+    <div class="sheet-title" id="sheet-title">Modal</div>
+    <div id="sheet-body"></div>
+  </div>
+</div>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────
+const SYL={cbse:{label:'CBSE',short:'CBSE',curriculum:'NCERT'},intl:{label:'International',short:'Intl',curriculum:'IB/Cambridge'},state:{label:'State Board',short:'State',curriculum:'Samacheer'}};
+const CLASSES=[];['cbse','intl','state'].forEach(s=>{for(let g=6;g<=12;g++)CLASSES.push({id:`${s}-${g}`,grade:g,syllabus:s,name:`Grade ${g} — ${SYL[s].label}`});});
+const AVS=['#1e6fff','#7c3aed','#00c48c','#f59e0b','#ef4444','#0891b2','#db2777','#ea580c'];
+
+const D={
+  students:[
+    {id:'S01',name:'Arun Kumar',     cid:'cbse-10', syl:'cbse',  parent:'Rajesh Kumar', phone:'9876543210',fees:'paid',   att:92,avg:78},
+    {id:'S02',name:'Priya Sharma',   cid:'cbse-10', syl:'cbse',  parent:'Venkat Sharma',phone:'9876543211',fees:'pending',att:85,avg:88},
+    {id:'S03',name:'Karthik Rajan',  cid:'intl-11', syl:'intl',  parent:'Sundar Rajan', phone:'9876543212',fees:'paid',   att:96,avg:92},
+    {id:'S04',name:'Divya Nair',     cid:'cbse-10', syl:'cbse',  parent:'Anand Nair',   phone:'9876543213',fees:'overdue',att:68,avg:54},
+    {id:'S05',name:'Mohammed Salim', cid:'state-12',syl:'state', parent:'Ibrahim Salim',phone:'9876543214',fees:'paid',   att:90,avg:82},
+    {id:'S06',name:'Kavitha Devi',   cid:'state-9', syl:'state', parent:'Murugan Devi', phone:'9876543215',fees:'pending',att:75,avg:65},
+    {id:'S07',name:'Rahul Vijay',    cid:'intl-11', syl:'intl',  parent:'Vijay Kumar',  phone:'9876543216',fees:'paid',   att:88,avg:70},
+    {id:'S08',name:'Sowmya Balan',   cid:'intl-12', syl:'intl',  parent:'Balan Nair',   phone:'9876543217',fees:'paid',   att:94,avg:95},
+    {id:'S09',name:'Ravi Shankar',   cid:'cbse-8',  syl:'cbse',  parent:'Shankar Das',  phone:'9876543218',fees:'paid',   att:89,avg:73},
+    {id:'S10',name:'Meena Pillai',   cid:'state-10',syl:'state', parent:'Pillai Raj',   phone:'9876543219',fees:'partial',att:82,avg:79},
+  ],
+  teachers:[
+    {id:'T01',name:'Mrs. Lalitha Priya', sub:'Mathematics',syls:['cbse','intl','state'],exp:'12 yrs'},
+    {id:'T02',name:'Mr. Senthil Kumar',  sub:'Physics',    syls:['cbse','intl'],        exp:'8 yrs'},
+    {id:'T03',name:'Mrs. Kavya Srinivas',sub:'Chemistry',  syls:['cbse','state'],       exp:'10 yrs'},
+    {id:'T04',name:'Mr. Deepak Raj',     sub:'Biology',    syls:['cbse','state'],       exp:'6 yrs'},
+    {id:'T05',name:'Mrs. Anitha Mohan',  sub:'English',    syls:['cbse','intl','state'],exp:'14 yrs'},
+    {id:'T06',name:'Mr. Arjun Nair',     sub:'Science',    syls:['intl'],               exp:'9 yrs'},
+  ],
+  exams:[
+    {id:'E01',name:'Unit Test 1',   cid:'cbse-10', syl:'cbse', sub:'Mathematics',date:'2024-01-15',max:25, done:true},
+    {id:'E02',name:'Term Assess.',  cid:'intl-11', syl:'intl', sub:'Science',    date:'2024-01-20',max:50, done:true},
+    {id:'E03',name:'Quarterly',     cid:'cbse-10', syl:'cbse', sub:'All',        date:'2024-02-10',max:100,done:true},
+    {id:'E04',name:'Half Yearly',   cid:'state-10',syl:'state',sub:'All',        date:'2024-02-15',max:100,done:true},
+    {id:'E05',name:'Unit Test 2',   cid:'cbse-10', syl:'cbse', sub:'Mathematics',date:'2024-03-05',max:25, done:false},
+    {id:'E06',name:'Model Exam',    cid:'state-12',syl:'state',sub:'All',        date:'2024-03-20',max:100,done:false},
+  ],
+  marks:{S01:{'UT1 Maths':20,'UT1 Physics':18,'Quarterly':74},S02:{'UT1 Maths':23,'UT1 Physics':22,'Quarterly':88},S03:{'Term Assess':43},S04:{'UT1 Maths':10,'UT1 Physics':12,'Quarterly':48},S05:{'Half Yearly':82}},
+  fees:[
+    {id:'F01',sid:'S01',name:'Arun Kumar',   syl:'cbse', amount:4500,paid:4500,month:'Jan 2024',status:'paid',   due:'2024-01-10'},
+    {id:'F02',sid:'S02',name:'Priya Sharma', syl:'cbse', amount:4500,paid:0,   month:'Jan 2024',status:'pending',due:'2024-01-10'},
+    {id:'F03',sid:'S03',name:'Karthik Rajan',syl:'intl', amount:6000,paid:6000,month:'Jan 2024',status:'paid',   due:'2024-01-10'},
+    {id:'F04',sid:'S04',name:'Divya Nair',   syl:'cbse', amount:4500,paid:0,   month:'Dec 2023',status:'overdue',due:'2023-12-10'},
+    {id:'F05',sid:'S05',name:'Mohammed',     syl:'state',amount:3500,paid:3500,month:'Jan 2024',status:'paid',   due:'2024-01-10'},
+    {id:'F06',sid:'S06',name:'Kavitha Devi', syl:'state',amount:3500,paid:1750,month:'Jan 2024',status:'partial',due:'2024-01-10'},
+  ],
+  notes:[
+    {id:'N01',title:'Quadratic Equations — NCERT',sub:'Maths',    cid:'cbse-10', syl:'cbse', teacher:'Mrs. Lalitha',date:'Jan 20',size:'2.4 MB'},
+    {id:'N02',title:'IB Physics — Optics Notes',  sub:'Physics',  cid:'intl-11', syl:'intl', teacher:'Mr. Arjun',  date:'Jan 18',size:'3.1 MB'},
+    {id:'N03',title:'Samacheer Organic Chemistry', sub:'Chemistry',cid:'state-12',syl:'state',teacher:'Mrs. Kavya', date:'Jan 22',size:'4.2 MB'},
+    {id:'N04',title:'CBSE Biology — Cell Study',   sub:'Biology',  cid:'cbse-9',  syl:'cbse', teacher:'Mr. Deepak', date:'Jan 19',size:'1.8 MB'},
+  ],
+  notifs:[
+    {title:'Divya Nair absent',     desc:'3rd absence — WhatsApp sent to Anand Nair',time:'2h ago', type:'warn'},
+    {title:'Fee received',          desc:'Karthik Rajan — ₹6,000 International',     time:'4h ago', type:'success'},
+    {title:'New notes uploaded',    desc:'Samacheer Chemistry for Grade 12',          time:'Yesterday',type:'info'},
+    {title:'Exam scheduled',        desc:'CBSE Grade 10 — Unit Test 2, March 5',      time:'Yesterday',type:'info'},
+    {title:'Attendance alert',      desc:'Kavitha Devi (State) — below 75%',          time:'2d ago', type:'danger'},
+  ],
+  waLogs:[
+    {to:'Anand Nair (Divya Parent)',  msg:'Dear Parent, Divya Nair was absent today (Jan 22). Please ensure regular attendance.',time:'Jan 22, 9:15',status:'delivered'},
+    {to:'Venkat Sharma (Priya Parent)',msg:'Dear Parent, CBSE fees January ₹4,500 is pending. Please pay by Jan 31.',          time:'Jan 22, 10:00',status:'delivered'},
+    {to:'Murugan Devi (Kavitha Parent)',msg:"Kavitha's State Board attendance is below 75%. This may affect exam eligibility.", time:'Jan 21, 11:30',status:'sent'},
+  ],
+  tt:{Monday:['Maths','Physics','English','—','Chemistry','Biology'],Tuesday:['Physics','Maths','Biology','—','English','Chemistry'],Wednesday:['English','Chemistry','Maths','—','Physics','—'],Thursday:['Chemistry','Biology','English','—','Maths','Physics'],Friday:['Maths','English','Physics','—','Biology','Chemistry'],Saturday:['Revision','Test','—','—','—','—']},
+  slots:['9–10','10–11','11–12','12–1','1–2','2–3'],
+};
+
+let role='admin', attState={}, aiOpen=false, curPage='dashboard';
+let currentStudent=null;   // set on login for role=student
+let currentParentChild=null; // set on login for role=parent
+
+// DEMO login mapping: which student/parent data to load
+const LOGIN_MAP={
+  student:{ studentId:'S01' },
+  parent:{  childId:'S01'   },   // Rajesh Kumar → Arun Kumar
+};
+
+const NAV={
+  admin:[
+    {s:'Main'},{id:'dashboard',label:'Dashboard',ic:'grid'},{id:'reports',label:'Reports',ic:'bar-chart'},
+    {s:'People'},{id:'students',label:'Students',ic:'users'},{id:'teachers',label:'Teachers',ic:'user-check'},{id:'classes',label:'Classes',ic:'book-open'},
+    {s:'Academic'},{id:'attendance',label:'Attendance',ic:'check-square'},{id:'exams',label:'Exams & Results',ic:'file-text'},{id:'notes',label:'Study Materials',ic:'book'},{id:'homework',label:'Homework',ic:'edit'},
+    {s:'Finance'},{id:'fees',label:'Fees',ic:'dollar-sign'},{id:'whatsapp',label:'WhatsApp Logs',ic:'message-circle'},
+    {s:'Intelligence'},{id:'ai-insights',label:'AI Insights',ic:'cpu'},{id:'timetable',label:'Timetable',ic:'calendar'},{id:'settings',label:'Settings',ic:'settings'},
+  ],
+  teacher:[{s:'Main'},{id:'dashboard',label:'Dashboard',ic:'grid'},{s:'Classes'},{id:'attendance',label:'Attendance',ic:'check-square'},{id:'exams',label:'Marks',ic:'file-text'},{id:'notes',label:'Notes',ic:'book'},{id:'homework',label:'Homework',ic:'edit'},{s:'Reports'},{id:'reports',label:'Reports',ic:'bar-chart'},{id:'students',label:'Students',ic:'users'}],
+  student:[{s:'Main'},{id:'dashboard',label:'Dashboard',ic:'grid'},{s:'My Stuff'},{id:'attendance',label:'Attendance',ic:'check-square'},{id:'exams',label:'Results',ic:'file-text'},{id:'notes',label:'Notes',ic:'book'},{id:'homework',label:'Homework',ic:'edit'},{id:'fees',label:'Fees',ic:'dollar-sign'},{id:'timetable',label:'Timetable',ic:'calendar'},{id:'ai-insights',label:'AI Help',ic:'cpu'}],
+  parent:[{s:'Main'},{id:'dashboard',label:'Dashboard',ic:'grid'},{s:"My Child"},{id:'attendance',label:'Attendance',ic:'check-square'},{id:'exams',label:'Results',ic:'file-text'},{id:'homework',label:'Homework',ic:'edit'},{id:'fees',label:'Fees',ic:'dollar-sign'}],
+};
+
+const ICONS={
+  'grid':'<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>',
+  'bar-chart':'<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>',
+  'users':'<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+  'user-check':'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/>',
+  'book-open':'<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>',
+  'check-square':'<polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>',
+  'file-text':'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>',
+  'book':'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
+  'edit':'<path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>',
+  'dollar-sign':'<line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',
+  'message-circle':'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+  'cpu':'<rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/>',
+  'calendar':'<rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>',
+  'settings':'<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>',
+};
+
+function icon(k){return`<svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round">${ICONS[k]||''}</svg>`;}
+
+// ── HELPERS ──
+function getCls(id){return CLASSES.find(c=>c.id===id)||{grade:'?',syllabus:'cbse'};}
+function sylBadge(s){const cls={cbse:'b-cbse',intl:'b-intl',state:'b-state'};return`<span class="badge ${cls[s]}">${SYL[s].short}</span>`;}
+function pcolor(p){return p>=75?'var(--green)':p>=50?'var(--amber)':'var(--red)';}
+function avColor(i){return AVS[i%AVS.length];}
+function initials(name){return name.split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();}
+function feeBadge(s){const m={paid:'b-green',pending:'b-amber',overdue:'b-red',partial:'b-amber'};return`<span class="badge ${m[s]||'b-navy'}">${s}</span>`;}
+
+function toast(msg){
+  const old=document.getElementById('_toast');if(old)old.remove();
+  const el=document.createElement('div');el.id='_toast';el.className='toast';el.textContent=msg;
+  document.getElementById('app').appendChild(el);
+  setTimeout(()=>el.remove(),3200);
+}
+
+function openSheet(title,html){
+  document.getElementById('sheet-title').textContent=title;
+  document.getElementById('sheet-body').innerHTML=html;
+  document.getElementById('sheet-bg').classList.add('show');
+}
+function closeSheet(e){
+  if(!e||e.target===document.getElementById('sheet-bg'))
+    document.getElementById('sheet-bg').classList.remove('show');
+}
+
+// ── AUTH ──
+function selRole(r,btn){role=r;document.querySelectorAll('.role-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');}
+
+function doLogin(){
+  // Set logged-in student/parent child
+  if(role==='student'){
+    currentStudent = D.students.find(s=>s.id===LOGIN_MAP.student.studentId);
+  }
+  if(role==='parent'){
+    currentParentChild = D.students.find(s=>s.id===LOGIN_MAP.parent.childId);
+  }
+
+  const nm={admin:'Admin User',teacher:'Mrs. Lalitha Priya',
+    student: currentStudent ? currentStudent.name : 'Student',
+    parent:  'Rajesh Kumar'};
+  const av={admin:'AD',teacher:'LP',
+    student: currentStudent ? initials(currentStudent.name) : 'ST',
+    parent:'RK'};
+  const cls = currentStudent ? getCls(currentStudent.cid) : {};
+  const lb={admin:'Administrator',teacher:'Mathematics Teacher',
+    student: currentStudent ? `Grade ${cls.grade} ${SYL[currentStudent.syl].label}` : 'Student',
+    parent:  currentParentChild ? `Parent of ${currentParentChild.name}` : 'Parent'};
+
+  document.getElementById('tb-av').textContent=av[role];
+  document.getElementById('dr-av').textContent=av[role];
+  document.getElementById('dr-name').textContent=nm[role];
+  document.getElementById('dr-role').textContent=lb[role];
+  buildDrawer();
+  document.getElementById('login').style.display='none';
+  const app=document.getElementById('main-app');
+  app.style.display='flex';
+  app.classList.remove('hidden');
+  navTo('dashboard');
+}
+
+function doLogout(){
+  document.getElementById('main-app').style.display='none';
+  document.getElementById('main-app').classList.add('hidden');
+  document.getElementById('login').style.display='flex';
+  closeDrawer();
+}
+
+// ── DRAWER ──
+function buildDrawer(){
+  document.getElementById('drawer-nav').innerHTML=NAV[role].map(it=>{
+    if(it.s) return`<div class="drawer-section">${it.s}</div>`;
+    return`<button class="drawer-item" data-id="${it.id}" onclick="navTo('${it.id}');closeDrawer()">${icon(it.ic)}<span>${it.label}</span></button>`;
+  }).join('');
+}
+function openDrawer(){document.getElementById('drawer').classList.add('open');document.getElementById('drawer-overlay').classList.add('show');}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.getElementById('drawer-overlay').classList.remove('show');}
+
+// ── NAVIGATION ──
+function navTo(page){
+  curPage=page;
+  const titles={dashboard:'Dashboard',students:'Students',teachers:'Teachers',classes:'Classes',attendance:'Attendance',exams:'Exams & Results',notes:'Study Materials',homework:'Homework',fees:'Fees',whatsapp:'WhatsApp',reports:'Reports','ai-insights':'AI Insights',timetable:'Timetable',settings:'Settings',notifications:'Notifications'};
+  document.getElementById('tb-title').textContent=titles[page]||page;
+  document.querySelectorAll('.bn-item').forEach(b=>{const a=b.dataset.page===page;b.classList.toggle('active',a);});
+  document.querySelectorAll('.drawer-item[data-id]').forEach(b=>b.classList.toggle('active',b.dataset.id===page));
+  // Move pill
+  const active=document.querySelector(`.bn-item[data-page="${page}"]`);
+  if(active){const bn=document.getElementById('bottom-nav');const pill=document.getElementById('bn-pill');const r=active.getBoundingClientRect(),p=bn.getBoundingClientRect();pill.style.left=(r.left-p.left+r.width*.25)+'px';pill.style.width=(r.width*.5)+'px';}
+  ({dashboard:rDash,students:rStudents,teachers:rTeachers,classes:rClasses,attendance:rAttendance,exams:rExams,notes:rNotes,homework:rHomework,fees:rFees,whatsapp:rWhatsApp,'ai-insights':rAIInsights,reports:rReports,timetable:rTimetable,settings:rSettings,notifications:rNotifications}[page]||function(){pg('<div class="page-pad"><p style="color:var(--text2)">Coming soon</p></div>');})();
+}
+
+function pg(html){const p=document.getElementById('page');p.innerHTML=html;p.scrollTop=0;}
+
+// ── DASHBOARD ──
+function rDash(){
+  if(role==='admin'){
+    const cbse=D.students.filter(s=>s.syl==='cbse'),intl=D.students.filter(s=>s.syl==='intl'),state=D.students.filter(s=>s.syl==='state');
+    const totalFees=D.fees.reduce((a,f)=>a+f.paid,0);
+    pg(`
+    <div style="background:linear-gradient(135deg,var(--navy),var(--navy3));padding:18px 16px 22px">
+      <div style="font-size:12px;color:rgba(255,255,255,.6);margin-bottom:4px">Good morning,</div>
+      <div style="font-size:20px;font-weight:800;color:white">Admin Dashboard</div>
+      <div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:2px">Durai Tuition Centre • All Boards</div>
+    </div>
+    <div class="syl-summary" style="margin-top:14px">
+      <div class="syl-chip cbse"><div class="sv">${cbse.length}</div><div class="sl">CBSE</div></div>
+      <div class="syl-chip intl"><div class="sv">${intl.length}</div><div class="sl">Intl</div></div>
+      <div class="syl-chip state"><div class="sv">${state.length}</div><div class="sl">State</div></div>
+    </div>
+    <div class="stats-scroll">
+      <div class="stat-chip"><div class="sc-val">${D.students.length}</div><div class="sc-lbl">Students</div><div class="sc-bar"><div class="sc-fill" style="width:100%;background:var(--blue)"></div></div></div>
+      <div class="stat-chip"><div class="sc-val">${D.teachers.length}</div><div class="sc-lbl">Teachers</div><div class="sc-bar"><div class="sc-fill" style="width:80%;background:var(--green)"></div></div></div>
+      <div class="stat-chip"><div class="sc-val">${CLASSES.length}</div><div class="sc-lbl">Classes</div><div class="sc-bar"><div class="sc-fill" style="width:70%;background:var(--purple)"></div></div></div>
+      <div class="stat-chip"><div class="sc-val">₹${(totalFees/1000).toFixed(0)}K</div><div class="sc-lbl">Collected</div><div class="sc-bar"><div class="sc-fill" style="width:75%;background:var(--amber)"></div></div></div>
+      <div class="stat-chip"><div class="sc-val">${D.students.filter(s=>s.att<75).length}</div><div class="sc-lbl">At Risk</div><div class="sc-bar"><div class="sc-fill" style="width:25%;background:var(--red)"></div></div></div>
+    </div>
+    <div style="height:12px"></div>
+    <div class="sec-head"><h3>Attendance by board</h3><button onclick="navTo('reports')" class="btn btn-xs btn-secondary">View all</button></div>
+    <div class="card" style="margin:0 16px 14px">
+      <div class="bar-chart">
+        ${['cbse','intl','state'].map(s=>{const st=D.students.filter(x=>x.syl===s);const avg=Math.round(st.reduce((a,x)=>a+x.att,0)/st.length);const col=s==='cbse'?'bf-blue':s==='intl'?'bf-purple':'bf-green';return`<div class="bar-row"><div class="bar-lbl">${SYL[s].label}</div><div class="bar-track"><div class="bar-fill ${col}" style="width:${avg}%">${avg>=20?avg+'%':''}</div></div><div class="bar-val">${avg}%</div></div>`;}).join('')}
+      </div>
+    </div>
+    <div class="sec-head"><h3>AI alerts</h3><button onclick="navTo('ai-insights')" class="btn btn-xs btn-secondary">AI insights</button></div>
+    <div style="padding:0 16px;margin-bottom:14px">
+      <div style="background:var(--red-bg);border:1px solid rgba(239,68,68,.2);border-radius:var(--r);padding:12px 14px;margin-bottom:8px;border-left:3px solid var(--red)">
+        <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:3px">🚨 Divya Nair (CBSE 10) — High Risk</div>
+        <div style="font-size:12px;color:var(--text2)">Attendance 68%, marks declining. 42% chance of failing CBSE finals.</div>
+      </div>
+      <div style="background:var(--amber-bg);border:1px solid rgba(245,158,11,.2);border-radius:var(--r);padding:12px 14px;border-left:3px solid var(--amber)">
+        <div style="font-size:12px;font-weight:700;color:#b45309;margin-bottom:3px">⚠️ Kavitha Devi (State 9) — Medium Risk</div>
+        <div style="font-size:12px;color:var(--text2)">Samacheer marks dropped 65 → 58 over 3 tests.</div>
+      </div>
+    </div>
+    <div class="sec-head"><h3>Recent activity</h3></div>
+    <div class="timeline">${D.notifs.slice(0,4).map(n=>{const colors={warn:'var(--amber-bg)',success:'var(--green-bg)',info:'var(--blue-light)',danger:'var(--red-bg)'};const em={warn:'⚠️',success:'✅',info:'ℹ️',danger:'🚨'};return`<div class="tl-item"><div class="tl-dot" style="background:${colors[n.type]}">${em[n.type]}</div><div class="tl-body"><div class="tl-title">${n.title}</div><div class="tl-desc">${n.desc}</div><div class="tl-time">${n.time}</div></div></div>`;}).join('')}</div>
+    <div style="height:16px"></div>`);
+  }
+  else if(role==='teacher'){
+    pg(`<div style="background:linear-gradient(135deg,var(--navy),var(--navy3));padding:18px 16px 22px"><div style="font-size:12px;color:rgba(255,255,255,.6)">Welcome,</div><div style="font-size:20px;font-weight:800;color:white">Mrs. Lalitha Priya</div><div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:2px">Mathematics • CBSE | International | State Board</div></div>
+    <div class="stats-scroll"><div class="stat-chip"><div class="sc-val">74</div><div class="sc-lbl">My Students</div></div><div class="stat-chip"><div class="sc-val">88%</div><div class="sc-lbl">Avg Attend</div></div><div class="stat-chip"><div class="sc-val">3</div><div class="sc-lbl">Exams Due</div></div><div class="stat-chip"><div class="sc-val">12</div><div class="sc-lbl">Notes Up</div></div></div>
+    <div style="padding:16px;display:flex;flex-direction:column;gap:10px">
+      <button class="btn btn-primary btn-full" onclick="navTo('attendance')">✅ Take Attendance Now</button>
+      <button class="btn btn-secondary btn-full" onclick="navTo('exams')">📝 Enter Marks</button>
+      <button class="btn btn-secondary btn-full" onclick="navTo('notes')">📤 Upload Notes</button>
+      <button class="btn btn-secondary btn-full" onclick="navTo('homework')">📋 Assign Homework</button>
+    </div>`);
+  }
+  else if(role==='student'){
+    rStudentProfile(currentStudent);
+  }
+  else{
+    rParentChildProfile(currentParentChild);
+  }
+}
+
+// ── STUDENTS ──
+function rStudents(){
+  pg(`<div style="height:12px"></div>
+  <div class="search-bar"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" placeholder="Search students..." oninput="filterStudents(this.value)" id="s-search"></div>
+  <div class="syl-bar">
+    <button class="syl-btn active-all" onclick="stuFilt('all',this)">All (${D.students.length})</button>
+    <button class="syl-btn" onclick="stuFilt('cbse',this)">🔵 CBSE</button>
+    <button class="syl-btn" onclick="stuFilt('intl',this)">🟣 International</button>
+    <button class="syl-btn" onclick="stuFilt('state',this)">🟢 State Board</button>
+  </div>
+  <div id="stu-list" style="background:white;border-radius:var(--r);margin:0 16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow)">${stuRows(D.students)}</div>
+  <div style="padding:16px"><button class="btn btn-primary btn-full" onclick="openAddStudent()">+ Add New Student</button></div>`);
+}
+
+function stuRows(list){
+  return list.map((s,i)=>{const c=getCls(s.cid);return`<div class="stu-row" onclick="viewStudent('${s.id}')">
+    <div class="stu-av" style="background:${avColor(i)}">${initials(s.name)}</div>
+    <div class="stu-info"><div class="stu-name">${s.name}</div><div class="stu-sub">${SYL[s.syl].label} • Grade ${c.grade}</div></div>
+    <div class="stu-right"><span style="font-size:13px;font-weight:700;color:${s.att>=75?'var(--green)':'var(--red)'}">${s.att}%</span>${feeBadge(s.fees)}</div>
+  </div>`;}).join('');
+}
+
+let _sf='all', _ss='';
+function stuFilt(f,btn){
+  _sf=f;
+  document.querySelectorAll('.syl-bar .syl-btn').forEach(b=>{b.className='syl-btn';});
+  btn.className=`syl-btn active-${f}`;
+  applyStudentFilter();
+}
+function filterStudents(q){_ss=q;applyStudentFilter();}
+function applyStudentFilter(){
+  let r=D.students;
+  if(_sf!=='all')r=r.filter(s=>s.syl===_sf);
+  if(_ss)r=r.filter(s=>s.name.toLowerCase().includes(_ss.toLowerCase()));
+  document.getElementById('stu-list').innerHTML=stuRows(r);
+}
+
+function viewStudent(id){
+  const s=D.students.find(x=>x.id===id);const c=getCls(s.cid);const m=D.marks[id]||{};
+  const i=D.students.indexOf(s);
+  openSheet(s.name,`
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
+      <div style="width:56px;height:56px;border-radius:16px;background:${avColor(i)};display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:white;flex-shrink:0">${initials(s.name)}</div>
+      <div><div style="font-size:15px;font-weight:700;color:var(--navy)">${s.name}</div>
+        <div style="font-size:13px;color:var(--text2);margin-top:2px">${c.name}</div>
+        <div style="display:flex;gap:6px;margin-top:6px">${sylBadge(s.syl)}${feeBadge(s.fees)}</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px">
+      <div style="background:var(--bg);border-radius:var(--r-sm);padding:12px;text-align:center"><div style="font-size:22px;font-weight:800;color:${s.att>=75?'var(--green)':'var(--red)'}">${s.att}%</div><div style="font-size:11px;color:var(--text2)">Attendance</div></div>
+      <div style="background:var(--bg);border-radius:var(--r-sm);padding:12px;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--blue)">${s.avg}%</div><div style="font-size:11px;color:var(--text2)">Avg Marks</div></div>
+    </div>
+    <div style="background:var(--bg);border-radius:var(--r-sm);padding:12px;margin-bottom:16px;font-size:13px">
+      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)"><span style="color:var(--text2)">Parent</span><strong>${s.parent}</strong></div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)"><span style="color:var(--text2)">Phone</span><strong>+91 ${s.phone}</strong></div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0"><span style="color:var(--text2)">Curriculum</span><strong>${SYL[s.syl].curriculum}</strong></div>
+    </div>
+    ${Object.keys(m).length?`<div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px">Recent Marks</div>${Object.entries(m).map(([ex,mk])=>{const max=ex==='Quarterly'||ex==='Half Yearly'?100:ex==='Term Assess'?50:25;const p=Math.round(mk/max*100);return`<div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:13px">${ex}</span><strong>${mk}/${max}</strong></div><div class="prog"><div class="prog-fill ${p>=75?'pf-green':p>=50?'pf-amber':'pf-red'}" style="width:${p}%"></div></div></div>`;}).join('')}`:''}
+    <div style="display:flex;gap:8px;margin-top:16px">
+      <button class="btn btn-primary" style="flex:1" onclick="closeSheet();toast('📱 WhatsApp sent to ${s.parent}!')">💬 WhatsApp</button>
+      <button class="btn btn-secondary" onclick="closeSheet()">Close</button>
+    </div>`);
+}
+
+function openAddStudent(){
+  openSheet('Add New Student',`
+    <div class="field-grp"><label class="inp-label">Full Name</label><input class="inp" type="text" placeholder="Student full name"></div>
+    <div class="field-grp"><label class="inp-label">Syllabus</label><select class="inp"><option>CBSE (NCERT)</option><option>International (IB/Cambridge)</option><option>State Board (Samacheer)</option></select></div>
+    <div class="field-grp"><label class="inp-label">Grade</label><select class="inp">${[6,7,8,9,10,11,12].map(g=>`<option>Grade ${g}</option>`).join('')}</select></div>
+    <div class="field-grp"><label class="inp-label">Parent Name</label><input class="inp" type="text" placeholder="Parent / guardian name"></div>
+    <div class="field-grp"><label class="inp-label">Phone / WhatsApp</label><input class="inp" type="text" placeholder="+91 XXXXXXXXXX"></div>
+    <div class="field-grp"><label class="inp-label">Monthly Fee ₹</label><input class="inp" type="number" placeholder="CBSE: 4500 | Intl: 6000 | State: 3500"></div>
+    <button class="btn btn-primary btn-full" onclick="closeSheet();toast('✅ Student added successfully!')">Add Student</button>`);
+}
+
+// ── TEACHERS ──
+function rTeachers(){
+  pg(`<div style="height:12px"></div>
+  ${D.teachers.map((t,i)=>`<div class="card" style="margin:0 16px 10px">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+      <div style="width:44px;height:44px;border-radius:13px;background:${avColor(i+3)};display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:white;flex-shrink:0">${initials(t.name)}</div>
+      <div style="flex:1"><div style="font-size:14px;font-weight:700;color:var(--navy)">${t.name}</div><div style="font-size:12px;color:var(--text2)">${t.sub} • ${t.exp}</div></div>
+      <span class="badge b-green">Active</span>
+    </div>
+    <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px">${t.syls.map(s=>sylBadge(s)).join('')}</div>
+    <div style="display:flex;gap:6px">
+      <button class="btn btn-secondary btn-xs">Schedule</button>
+      <button class="btn btn-xs" style="background:var(--green-bg);color:#059669;border:1px solid rgba(0,196,140,.3)" onclick="toast('💬 WhatsApp for ${t.name}')">💬 WA</button>
+    </div>
+  </div>`).join('')}
+  <div style="padding:0 16px 16px"><button class="btn btn-primary btn-full">+ Add Teacher</button></div>`);
+}
+
+// ── CLASSES ──
+function rClasses(){
+  pg(`<div style="height:14px"></div>
+  <div class="syl-bar">
+    <button class="syl-btn active-all" onclick="clsFilt('all',this)">All (${CLASSES.length})</button>
+    <button class="syl-btn" onclick="clsFilt('cbse',this)">🔵 CBSE (7)</button>
+    <button class="syl-btn" onclick="clsFilt('intl',this)">🟣 International (7)</button>
+    <button class="syl-btn" onclick="clsFilt('state',this)">🟢 State Board (7)</button>
+  </div>
+  <div class="syl-summary">
+    <div class="syl-chip cbse"><div class="sv">7</div><div class="sl">CBSE</div></div>
+    <div class="syl-chip intl"><div class="sv">7</div><div class="sl">Intl</div></div>
+    <div class="syl-chip state"><div class="sv">7</div><div class="sl">State</div></div>
+  </div>
+  <div class="cls-grid" id="cls-grid">${clsCards(CLASSES)}</div>
+  <div style="height:16px"></div>`);
+}
+
+function clsCards(list){return list.map(c=>{const cnt=D.students.filter(s=>s.cid===c.id).length;return`<div class="cls-card ${c.syllabus}" onclick="toast('${c.name} — ${cnt} students')"><div class="cls-num">${c.grade}</div><div class="cls-lbl">${SYL[c.syllabus].short}</div><div class="cls-cnt">${cnt} students</div></div>`;}).join('');}
+
+window.clsFilt=function(f,btn){
+  document.querySelectorAll('.syl-bar .syl-btn').forEach(b=>{b.className='syl-btn';});
+  btn.className=`syl-btn active-${f}`;
+  document.getElementById('cls-grid').innerHTML=clsCards(f==='all'?CLASSES:CLASSES.filter(c=>c.syllabus===f));
+};
+
+// ── ATTENDANCE ──
+function rAttendance(){
+  let curSyl='cbse',curGrade=10;
+  function buildGrid(syl,g){
+    curSyl=syl;curGrade=g;
+    const students=D.students.filter(s=>s.syl===syl&&getCls(s.cid).grade==g);
+    attState={};students.forEach(s=>{attState[s.id]='P';});
+    const el=document.getElementById('att-grid');
+    if(!el)return;
+    el.innerHTML=students.length?students.map((s,i)=>`<div class="att-card">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:36px;height:36px;border-radius:10px;background:${avColor(i)};display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:white;flex-shrink:0">${initials(s.name)}</div>
+        <div><div style="font-size:13px;font-weight:600;color:var(--navy)">${s.name}</div><div style="font-size:11px;color:var(--text2)">${SYL[s.syl].short}</div></div>
+      </div>
+      <div class="att-btns">
+        <button class="att-btn P" onclick="setAtt('${s.id}','P',this)">✓</button>
+        <button class="att-btn" onclick="setAtt('${s.id}','A',this)">✗</button>
+        <button class="att-btn" onclick="setAtt('${s.id}','L',this)">⏰</button>
+      </div>
+    </div>`).join(''):`<div style="text-align:center;color:var(--text2);padding:20px;font-size:13px">No students in this class</div>`;
+    updateAttCounts();
+  }
+  pg(`<div style="height:12px"></div>
+  ${role!=='student'?`<div class="card" style="margin:0 16px 14px">
+    <div style="display:flex;gap:8px;margin-bottom:10px">
+      <select class="inp" id="att-syl" style="flex:1" onchange="document.getElementById('att-grade').dispatchEvent(new Event('change'))">
+        <option value="cbse">🔵 CBSE</option><option value="intl">🟣 International</option><option value="state">🟢 State Board</option>
+      </select>
+      <select class="inp" id="att-grade" style="width:90px" onchange="buildGrid(document.getElementById('att-syl').value,this.value)">${[6,7,8,9,10,11,12].map(g=>`<option${g===10?' selected':''}>${g}</option>`).join('')}</select>
+    </div>
+    <div style="display:flex;gap:6px">
+      <button class="btn btn-success btn-sm" style="flex:1" onclick="markAll('P')">✓ All Present</button>
+      <button class="btn btn-danger btn-sm" style="flex:1" onclick="markAll('A')">✗ All Absent</button>
+    </div>
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:0 16px;margin-bottom:10px">
+    <div style="font-size:13px;font-weight:700;color:var(--navy)" id="att-class-lbl">Grade 10 CBSE — Today</div>
+    <div style="display:flex;gap:6px"><span class="badge b-green" id="cnt-P">P: 3</span><span class="badge b-red" id="cnt-A">A: 0</span></div>
+  </div>
+  <div style="padding:0 16px" id="att-grid"></div>
+  <div style="padding:16px"><button class="btn btn-primary btn-full" onclick="submitAtt()">Submit & Send WhatsApp Alerts</button></div>`:``}
+  <div class="sec-head" style="margin-top:${role!=='student'?'0':'12px'}"><h3>Attendance summary</h3></div>
+  <div style="background:white;border-radius:var(--r);margin:0 16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow)">
+    ${(role==='student'?[currentStudent]:role==='parent'?[currentParentChild]:D.students).filter(Boolean).map(s=>{const c=getCls(s.cid);return`<div style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid var(--bg)">
+      <div style="flex:1"><div style="font-size:13px;font-weight:600;color:var(--navy)">${s.name}</div>
+        <div style="display:flex;gap:5px;margin-top:3px">${sylBadge(s.syl)}<span style="font-size:11px;color:var(--text2)">Grade ${c.grade}</span></div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:15px;font-weight:800;color:${s.att>=85?'var(--green)':s.att>=75?'var(--amber)':'var(--red)'}">${s.att}%</div>
+        <div style="font-size:11px;color:var(--text3)">${Math.round(s.att*22/100)}/22 days</div>
+      </div>
+    </div>`;}).join('')}
+  </div>
+  <div style="height:16px"></div>`);
+  if(role!=='student'){
+    window.buildGrid=buildGrid;
+    buildGrid('cbse',10);
+  }
+}
+
+function setAtt(id,s,btn){attState[id]=s;btn.closest('.att-btns').querySelectorAll('.att-btn').forEach(b=>b.className='att-btn');btn.className=`att-btn ${s}`;updateAttCounts();}
+function markAll(s){Object.keys(attState).forEach(id=>{attState[id]=s;});document.querySelectorAll('.att-btns').forEach(g=>{g.querySelectorAll('.att-btn').forEach(b=>b.className='att-btn');g.querySelectorAll('.att-btn')[s==='P'?0:1].className=`att-btn ${s}`;});updateAttCounts();}
+function updateAttCounts(){const P=Object.values(attState).filter(v=>v==='P').length,A=Object.values(attState).filter(v=>v==='A').length;const cp=document.getElementById('cnt-P'),ca=document.getElementById('cnt-A');if(cp)cp.textContent=`P: ${P}`;if(ca)ca.textContent=`A: ${A}`;}
+function submitAtt(){const ab=Object.entries(attState).filter(([,v])=>v==='A');toast(`✅ Saved! ${ab.length?`📱 WhatsApp sent to ${ab.length} parent(s)`:'All present today!'}`);}
+
+// ── EXAMS ──
+function rExams(){
+  const tabs=['Exams','Marks','Results','Progress'];
+  let curTab=0;
+  function renderTab(){
+    const c=document.getElementById('exam-content');
+    if(!c)return;
+    if(curTab===0){
+      c.innerHTML=`<div style="height:2px"></div>`+D.exams.map(e=>{const cl=getCls(e.cid);return`<div class="card" style="margin:0 16px 10px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+          <div><div style="font-size:14px;font-weight:700;color:var(--navy)">${e.name}</div><div style="font-size:12px;color:var(--text2);margin-top:2px">${SYL[e.syl].label} • Grade ${cl.grade} • ${e.sub}</div></div>
+          <span class="badge ${e.done?'b-green':'b-amber'}">${e.done?'Done':'Upcoming'}</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-size:12px;color:var(--text3)">${e.date} • Max: ${e.max}</div>
+          ${e.done?`<button class="btn btn-xs btn-secondary" onclick="toast('Results for ${e.name}')">Results</button>`:role!=='student'&&role!=='parent'?`<button class="btn btn-xs btn-primary" onclick="toast('Enter marks for ${e.name}')">Enter Marks</button>`:''}
+        </div>
+      </div>`;}).join('')+`<div style="padding:16px">${role!=='student'&&role!=='parent'?`<button class="btn btn-primary btn-full" onclick="createExam()">+ Create Exam</button>`:''}</div>`;
+    }else if(curTab===1){
+      const students=role==='student'?[currentStudent].filter(Boolean):role==='parent'?[currentParentChild].filter(Boolean):D.students.filter(s=>s.syl==='cbse'&&getCls(s.cid).grade===10);
+      c.innerHTML=`<div style="padding:14px 16px 0;font-size:13px;font-weight:600;color:var(--navy)">Quarterly Exam — CBSE Grade 10</div><div style="overflow-x:auto;padding:0 16px;margin-top:10px"><table style="min-width:340px"><thead><tr><th>Student</th><th>Maths</th><th>Science</th><th>English</th></tr></thead><tbody>${students.map(s=>{const m=D.marks[s.id]||{};return`<tr><td style="font-weight:600">${s.name.split(' ')[0]}</td><td><input class="marks-in" type="number" min="0" max="100" value="${m.Quarterly||''}"></td><td><input class="marks-in" type="number" min="0" max="100" value="${Math.round((m.Quarterly||0)*.9)}"></td><td><input class="marks-in" type="number" min="0" max="100" value="${Math.round((m.Quarterly||0)*.92)}"></td></tr>`;}).join('')}</tbody></table></div><div style="padding:12px 16px"><button class="btn btn-primary btn-full" onclick="toast('✅ Marks saved! 📱 Results sent to parents')">Save & Notify</button></div>`;
+    }else if(curTab===2){
+      c.innerHTML=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:14px 16px">${D.students.slice(0,6).map(s=>{const m=D.marks[s.id]?.Quarterly||D.marks[s.id]?.['Half Yearly']||D.marks[s.id]?.['Term Assess']||0;const g=m>=90?'A+':m>=80?'A':m>=70?'B+':m>=60?'B':m>=50?'C':'F';return`<div class="result-card"><div style="margin-bottom:6px">${sylBadge(s.syl)}</div><div style="font-size:12px;color:var(--text2);margin-bottom:4px">${s.name.split(' ')[0]}</div><div class="result-score" style="color:${pcolor(m)}">${m||'—'}</div><div class="result-grade" style="color:${pcolor(m)}">Grade ${g}</div></div>`;}).join('')}</div>`;
+    }else{
+      c.innerHTML=`<div style="padding:14px 16px">${D.students.slice(0,6).map(s=>`<div style="margin-bottom:14px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><strong style="font-size:13px">${s.name.split(' ')[0]}</strong>${sylBadge(s.syl)}</div><div class="prog"><div class="prog-fill ${s.avg>=75?'pf-green':s.avg>=50?'pf-amber':'pf-red'}" style="width:${s.avg}%"></div></div><div style="font-size:11px;color:var(--text3);margin-top:3px">Overall ${s.avg}%</div></div>`).join('')}</div>`;
+    }
+    document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',i===curTab));
+  }
+  pg(`<div style="height:12px"></div>
+  <div class="tabs">${tabs.map((t,i)=>`<button class="tab${i===0?' active':''}" onclick="curTabEx=${i};renderTabEx()">${t}</button>`).join('')}</div>
+  <div id="exam-content"></div>`);
+  window.curTabEx=0;
+  window.renderTabEx=function(){curTab=window.curTabEx;renderTab();document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',i===curTab));};
+  renderTab();
+}
+
+function createExam(){openSheet('Create Exam',`<div class="field-grp"><label class="inp-label">Exam Name</label><input class="inp" type="text" placeholder="e.g. Unit Test 2"></div><div class="field-grp"><label class="inp-label">Syllabus</label><select class="inp"><option>CBSE (NCERT)</option><option>International (IB/Cambridge)</option><option>State Board (Samacheer)</option></select></div><div class="field-grp"><label class="inp-label">Grade</label><select class="inp">${[6,7,8,9,10,11,12].map(g=>`<option>Grade ${g}</option>`).join('')}</select></div><div class="field-grp"><label class="inp-label">Date</label><input class="inp" type="date"></div><div class="field-grp"><label class="inp-label">Max Marks</label><input class="inp" type="number" value="100"></div><button class="btn btn-primary btn-full" onclick="closeSheet();toast('✅ Exam created!')">Create Exam</button>`);}
+
+// ── NOTES ──
+function rNotes(){
+  pg(`<div style="height:12px"></div>
+  ${role!=='student'&&role!=='parent'?`<div style="padding:0 16px 12px"><button class="btn btn-primary btn-full" onclick="uploadNote()">📤 Upload Material</button></div>`:''}
+  <div class="search-bar"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input class="inp" style="border:none;background:none;padding:0" type="text" placeholder="Search notes..."></div>
+  ${D.notes.map(n=>{const c=getCls(n.cid);return`<div class="card" style="margin:0 16px 10px">
+    <div style="display:flex;gap:12px;align-items:flex-start">
+      <div style="width:42px;height:42px;border-radius:11px;background:${n.syl==='cbse'?'#e0edff':n.syl==='intl'?'#ede9fe':'#dcfce7'};display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">📄</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:5px;line-height:1.3">${n.title}</div>
+        <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:6px">${sylBadge(n.syl)}<span class="badge b-navy">Grade ${c.grade}</span><span class="badge b-navy">${n.sub}</span></div>
+        <div style="font-size:11px;color:var(--text3)">${n.teacher} • ${n.date} • ${n.size}</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:6px;margin-top:12px">
+      <button class="btn btn-primary btn-sm" style="flex:1" onclick="toast('⬇ Downloading ${n.title}...')">⬇ Download</button>
+      <button class="btn btn-secondary btn-sm" onclick="toast('👁 Preview opening...')">Preview</button>
+      ${role!=='student'&&role!=='parent'?`<button class="btn btn-danger btn-xs" onclick="toast('🗑 Deleted')">🗑</button>`:''}
+    </div>
+  </div>`;}).join('')}
+  <div style="height:16px"></div>`);
+}
+
+function uploadNote(){openSheet('Upload Material',`<div class="field-grp"><label class="inp-label">Title</label><input class="inp" type="text" placeholder="e.g. Chapter 5 Notes"></div><div class="field-grp"><label class="inp-label">Syllabus</label><select class="inp"><option>CBSE (NCERT)</option><option>International (IB/Cambridge)</option><option>State Board (Samacheer)</option></select></div><div class="field-grp"><label class="inp-label">Grade</label><select class="inp">${[6,7,8,9,10,11,12].map(g=>`<option>Grade ${g}</option>`).join('')}</select></div><div class="field-grp"><label class="inp-label">Subject</label><select class="inp"><option>Mathematics</option><option>Physics</option><option>Chemistry</option><option>Biology</option><option>English</option></select></div><div class="upload-z" onclick="toast('📁 File picker opened')"><div style="font-size:28px;margin-bottom:8px">📁</div><div style="font-size:13px;font-weight:600;color:var(--text2)">Tap to upload file</div><div style="font-size:11px;color:var(--text3);margin-top:4px">PDF, Image, Word • Max 50MB</div></div><button class="btn btn-primary btn-full" onclick="closeSheet();toast('✅ Uploaded! Students notified.')">Upload</button>`);}
+
+// ── HOMEWORK ──
+function rHomework(){
+  const hw=[{title:'Solve Ex 5.3 Q1–Q15',sub:'Mathematics',syl:'cbse',grade:10,due:'Jan 25',status:'pending'},{title:"Newton's Laws Notes",sub:'Physics',syl:'intl',grade:11,due:'Jan 24',status:'submitted'},{title:'Draw Chapter 6 diagrams',sub:'Biology',syl:'state',grade:9,due:'Jan 26',status:'pending'},{title:'IB Extended Essay draft',sub:'English',syl:'intl',grade:12,due:'Jan 30',status:'pending'}];
+  pg(`<div style="height:12px"></div>
+  ${role!=='student'&&role!=='parent'?`<div style="padding:0 16px 12px"><button class="btn btn-primary btn-full" onclick="assignHW()">+ Assign Homework</button></div>`:''}
+  ${hw.map(h=>`<div class="card" style="margin:0 16px 10px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+      <div style="flex:1;margin-right:10px"><div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:5px">${h.title}</div>
+      <div style="display:flex;gap:5px">${sylBadge(h.syl)}<span class="badge b-navy">Grade ${h.grade}</span><span class="badge b-navy">${h.sub}</span></div></div>
+      <span class="badge ${h.status==='submitted'?'b-green':'b-amber'}">${h.status}</span>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div style="font-size:12px;color:var(--text3)">Due: ${h.due}</div>
+      ${role==='student'?`<button class="btn btn-xs btn-primary" onclick="toast('✅ Homework submitted!')">Submit</button>`:
+      `<button class="btn btn-xs btn-secondary" onclick="toast('📋 Submissions viewed')">View</button>`}
+    </div>
+  </div>`).join('')}
+  <div style="height:16px"></div>`);
+}
+
+function assignHW(){openSheet('Assign Homework',`<div class="field-grp"><label class="inp-label">Title</label><input class="inp" type="text" placeholder="Homework description"></div><div class="field-grp"><label class="inp-label">Syllabus</label><select class="inp"><option>CBSE</option><option>International</option><option>State Board</option></select></div><div class="field-grp"><label class="inp-label">Grade</label><select class="inp">${[6,7,8,9,10,11,12].map(g=>`<option>Grade ${g}</option>`).join('')}</select></div><div class="field-grp"><label class="inp-label">Subject</label><select class="inp"><option>Mathematics</option><option>Physics</option><option>Chemistry</option><option>Biology</option><option>English</option></select></div><div class="field-grp"><label class="inp-label">Due Date</label><input class="inp" type="date"></div><div class="field-grp"><label class="inp-label">Description</label><textarea class="inp" rows="3" placeholder="Detailed instructions..."></textarea></div><button class="btn btn-primary btn-full" onclick="closeSheet();toast('✅ Assigned! 📱 Parents notified')">Assign Homework</button>`);}
+
+// ── FEES ──
+function rFees(){
+  const total=D.fees.reduce((a,f)=>a+f.amount,0),coll=D.fees.reduce((a,f)=>a+f.paid,0);
+  pg(`<div style="background:linear-gradient(135deg,var(--navy),var(--navy3));padding:18px 16px 22px">
+    <div style="font-size:12px;color:rgba(255,255,255,.6)">Fee Management</div>
+    <div style="font-size:28px;font-weight:800;color:white;margin-top:4px">₹${(coll/1000).toFixed(1)}K</div>
+    <div style="font-size:13px;color:rgba(255,255,255,.6);margin-top:2px">collected of ₹${(total/1000).toFixed(1)}K total</div>
+    <div class="prog" style="margin-top:14px;background:rgba(255,255,255,.2)"><div class="prog-fill pf-green" style="width:${Math.round(coll/total*100)}%"></div></div>
+    <div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:6px">${Math.round(coll/total*100)}% collection rate</div>
+  </div>
+  <div class="syl-summary" style="margin-top:14px">
+    ${['cbse','intl','state'].map(s=>{const fees=D.fees.filter(f=>f.syl===s);const amt=fees.reduce((a,f)=>a+f.amount,0);return`<div class="syl-chip ${s}"><div class="sv">₹${(amt/1000).toFixed(1)}K</div><div class="sl">${SYL[s].short}</div></div>`;}).join('')}
+  </div>
+  ${role==='admin'?`<div style="padding:0 16px;margin-bottom:14px;display:flex;gap:8px"><button class="btn btn-primary" style="flex:1" onclick="toast('📱 Reminders sent!')">Send Reminders</button><button class="btn btn-secondary" style="flex:1" onclick="toast('📄 PDF exported!')">Export PDF</button></div>`:''}
+  <div style="padding:0 16px">
+    ${D.fees.map(f=>`<div class="fee-row">
+      <div class="fr-top">
+        <div><div class="fr-name">${f.name}</div><div class="fr-sub">${SYL[f.syl].label} • ${f.month}</div><div style="margin-top:5px;display:flex;gap:5px">${sylBadge(f.syl)}${feeBadge(f.status)}</div></div>
+        <div style="text-align:right"><div class="fr-amt">₹${f.paid.toLocaleString()}</div><div style="font-size:11px;color:var(--text3);margin-top:2px">of ₹${f.amount.toLocaleString()}</div></div>
+      </div>
+      <div class="prog"><div class="prog-fill ${f.status==='paid'?'pf-green':f.status==='overdue'?'pf-red':'pf-amber'}" style="width:${Math.round(f.paid/f.amount*100)}%"></div></div>
+      ${role==='admin'?`<div style="display:flex;gap:6px;margin-top:10px">
+        ${f.status!=='paid'?`<button class="btn btn-primary btn-xs" onclick="recordPay('${f.id}')">Record Payment</button>`:''}
+        <button class="btn btn-secondary btn-xs" onclick="toast('🧾 Receipt downloaded!')">Receipt</button>
+        ${f.status!=='paid'?`<button class="btn btn-xs" style="background:var(--green-bg);color:#059669;border:1px solid rgba(0,196,140,.3)" onclick="toast('📱 WA reminder sent!')">WA Remind</button>`:''}
+      </div>`:''}
+    </div>`).join('')}
+  </div>
+  <div style="height:16px"></div>`);
+}
+
+function recordPay(id){const f=D.fees.find(x=>x.id===id);openSheet('Record Payment',`<div class="field-grp"><label class="inp-label">Student</label><input class="inp" value="${f.name}" readonly></div><div class="field-grp"><label class="inp-label">Syllabus</label><input class="inp" value="${SYL[f.syl].label}" readonly></div><div class="field-grp"><label class="inp-label">Amount Pending</label><input class="inp" type="number" value="${f.amount-f.paid}"></div><div class="field-grp"><label class="inp-label">Payment Mode</label><select class="inp"><option>Cash</option><option>UPI</option><option>Bank Transfer</option><option>Cheque</option></select></div><div class="field-grp"><label class="inp-label">Reference Number</label><input class="inp" type="text" placeholder="Transaction ID"></div><button class="btn btn-primary btn-full" onclick="closeSheet();toast('✅ Payment recorded! 🧾 Receipt sent')">Record Payment</button>`);}
+
+// ── WHATSAPP ──
+function rWhatsApp(){
+  pg(`<div style="height:12px"></div>
+  <div class="stats-scroll"><div class="stat-chip"><div class="sc-val">${D.waLogs.filter(w=>w.status==='delivered').length}</div><div class="sc-lbl">Delivered</div></div><div class="stat-chip"><div class="sc-val">${D.waLogs.length}</div><div class="sc-lbl">Total Sent</div></div><div class="stat-chip"><div class="sc-val">Auto</div><div class="sc-lbl">Active</div></div></div>
+  <div style="padding:12px 16px"><button class="btn btn-primary btn-full" onclick="composeWA()">✉️ Send Message</button></div>
+  <div class="sec-head"><h3>Message log</h3></div>
+  ${D.waLogs.map(w=>`<div class="wa-item" style="margin:0 16px 8px"><div class="wa-to">📱 ${w.to}</div><div class="wa-msg">${w.msg}</div><div class="wa-foot"><span class="wa-time">${w.time}</span><span class="wa-stat">${w.status==='delivered'?'✓✓ Delivered':'✓ Sent'}</span></div></div>`).join('')}
+  <div class="sec-head" style="margin-top:14px"><h3>Auto-trigger rules</h3></div>
+  <div class="card" style="margin:0 16px 16px">
+    ${[['Student absent','Absence alert to parent',true],['Result published','Marks + grade via WA',true],['Fee pending >7d','Fee reminder message',true],['Exam in 3 days','Exam reminder',true],['Attendance <75%','Critical warning',true]].map(([t,m,a])=>`<div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bg)"><div><div style="font-size:13px;font-weight:600;color:var(--navy)">${t}</div><div style="font-size:11px;color:var(--text2)">${m}</div></div><span class="badge ${a?'b-green':'b-navy'}" style="cursor:pointer" onclick="this.className='badge '+(this.className.includes('b-green')?'b-navy':'b-green');this.textContent=(this.className.includes('b-green')?'ON':'OFF')">${a?'ON':'OFF'}</span></div>`).join('')}
+  </div>`);
+}
+
+function composeWA(){openSheet('Send WhatsApp',`<div class="field-grp"><label class="inp-label">Send To</label><select class="inp"><option>All Parents (All Boards)</option><option>CBSE Parents Only</option><option>International Parents Only</option><option>State Board Parents Only</option></select></div><div class="field-grp"><label class="inp-label">Template</label><select class="inp"><option>Custom Message</option><option>Absence Alert</option><option>Fee Reminder</option><option>Exam Notification</option><option>Result Announcement</option></select></div><div class="field-grp"><label class="inp-label">Message</label><textarea class="inp" rows="5" placeholder="Type your message..."></textarea></div><button class="btn btn-primary btn-full" onclick="closeSheet();toast('📱 WhatsApp sent!')">Send Now</button>`);}
+
+// ── AI INSIGHTS ──
+function rAIInsights(){
+  let aiMsgs=[{role:'bot',text:'Hi! I\'m the AI assistant for Durai Tuition Centre.\n\nI support CBSE (NCERT), International (IB/Cambridge), and State Board (Samacheer). Ask me anything about students, marks, attendance, or study plans!'}];
+  function renderChat(){
+    document.getElementById('ai-chat-msgs').innerHTML=aiMsgs.map(m=>`<div class="ai-msg ${m.role==='user'?'ai-user':'ai-bot'}">${m.text.replace(/\n/g,'<br>')}</div>`).join('');
+    document.getElementById('ai-chat-msgs').scrollTop=99999;
+  }
+  pg(`<div style="background:linear-gradient(135deg,var(--navy),var(--navy3));padding:16px 16px 18px">
+    <div style="font-size:12px;color:rgba(255,255,255,.6)">AI Assistant</div>
+    <div style="font-size:18px;font-weight:800;color:white;margin-top:2px">Durai AI</div>
+    <div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:2px">CBSE • International • State Board</div>
+  </div>
+  <div style="display:flex;gap:6px;overflow-x:auto;padding:12px 16px;scrollbar-width:none">
+    <button class="btn btn-secondary btn-xs" style="white-space:nowrap" onclick="aiQ('Compare CBSE vs International performance')">📊 Compare boards</button>
+    <button class="btn btn-secondary btn-xs" style="white-space:nowrap" onclick="aiQ('Which students are at risk?')">⚠️ At-risk students</button>
+    <button class="btn btn-secondary btn-xs" style="white-space:nowrap" onclick="aiQ('Create a CBSE Grade 10 study plan')">📅 CBSE study plan</button>
+    <button class="btn btn-secondary btn-xs" style="white-space:nowrap" onclick="aiQ('Fee collection analysis')">💰 Fee analysis</button>
+  </div>
+  <div class="ai-wrap" id="ai-chat-msgs" style="min-height:200px"></div>
+  <div style="padding:10px 16px 16px;display:flex;gap:8px;background:white;border-top:1px solid var(--border)">
+    <input class="inp" id="ai-in" placeholder="Ask anything..." style="flex:1" onkeydown="if(event.key==='Enter')sendAI()">
+    <button class="btn btn-primary" onclick="sendAI()">Send</button>
+  </div>`);
+  renderChat();
+  window.aiQ=function(p){document.getElementById('ai-in').value=p;sendAI();};
+  window.sendAI=async function(){
+    const inp=document.getElementById('ai-in'),msg=inp.value.trim();if(!msg)return;inp.value='';
+    aiMsgs.push({role:'user',text:msg});
+    aiMsgs.push({role:'bot',text:'Thinking...'});
+    renderChat();
+    const cbse=D.students.filter(s=>s.syl==='cbse').length,intl=D.students.filter(s=>s.syl==='intl').length,state=D.students.filter(s=>s.syl==='state').length;
+    const sys=`You are the AI assistant for Durai Tuition Centre in Chennai, India. The centre teaches CBSE (NCERT, ${cbse} students), International (IB/Cambridge, ${intl} students), and State Board (Samacheer Kalvi, ${state} students). User role: ${role}. Be concise, board-specific, and helpful.`;
+    try{
+      const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:500,system:sys,messages:[{role:'user',content:msg}]})});
+      const d=await res.json();
+      aiMsgs[aiMsgs.length-1]={role:'bot',text:d.content?.[0]?.text||'Unable to respond.'};
+    }catch{
+      aiMsgs[aiMsgs.length-1]={role:'bot',text:`Based on current data: ${cbse} CBSE, ${intl} International, ${state} State Board students. ${D.students.filter(s=>s.att<75).length} at-risk students detected. Add your Anthropic API key in Settings for full AI.`};
+    }
+    renderChat();
+  };
+}
+
+// ── REPORTS ──
+function rReports(){
+  pg(`<div style="height:12px"></div>
+  <div class="syl-summary">
+    ${['cbse','intl','state'].map(s=>{const st=D.students.filter(x=>x.syl===s);const avgM=Math.round(st.reduce((a,x)=>a+x.avg,0)/st.length),avgA=Math.round(st.reduce((a,x)=>a+x.att,0)/st.length);return`<div class="syl-chip ${s}"><div class="sv">${avgM}%</div><div class="sl">${SYL[s].short} marks</div></div>`;}).join('')}
+  </div>
+  <div class="card" style="margin:0 16px 14px"><div class="card-row"><h4>Marks by board</h4></div>
+    <div class="bar-chart">
+      ${['cbse','intl','state'].map(s=>{const st=D.students.filter(x=>x.syl===s);const avg=Math.round(st.reduce((a,x)=>a+x.avg,0)/st.length);const col=s==='cbse'?'bf-blue':s==='intl'?'bf-purple':'bf-green';return`<div class="bar-row"><div class="bar-lbl">${SYL[s].label}</div><div class="bar-track"><div class="bar-fill ${col}" style="width:${avg}%">${avg}%</div></div><div class="bar-val">${avg}%</div></div>`;}).join('')}
+    </div>
+  </div>
+  <div class="card" style="margin:0 16px 14px"><div class="card-row"><h4>Attendance by board</h4></div>
+    <div class="bar-chart">
+      ${['cbse','intl','state'].map(s=>{const st=D.students.filter(x=>x.syl===s);const avg=Math.round(st.reduce((a,x)=>a+x.att,0)/st.length);const col=avg>=85?'bf-green':avg>=75?'bf-amber':'bf-red';return`<div class="bar-row"><div class="bar-lbl">${SYL[s].label}</div><div class="bar-track"><div class="bar-fill ${col}" style="width:${avg}%">${avg}%</div></div><div class="bar-val">${avg}%</div></div>`;}).join('')}
+    </div>
+  </div>
+  <div class="card" style="margin:0 16px 14px"><div class="card-row"><h4>Fee collection</h4></div>
+    <div class="bar-chart">
+      ${['cbse','intl','state'].map(s=>{const fees=D.fees.filter(f=>f.syl===s);const t=fees.reduce((a,f)=>a+f.amount,0),c=fees.reduce((a,f)=>a+f.paid,0);const pct=t?Math.round(c/t*100):0;return`<div class="bar-row"><div class="bar-lbl">${SYL[s].label}</div><div class="bar-track"><div class="bar-fill bf-blue" style="width:${pct}%">${pct}%</div></div><div class="bar-val">${pct}%</div></div>`;}).join('')}
+    </div>
+  </div>
+  <div style="padding:0 16px 16px"><button class="btn btn-primary btn-full" onclick="toast('📄 PDF report generated!')">📄 Export PDF Report</button></div>`);
+}
+
+// ── TIMETABLE ──
+function rTimetable(){
+  const days=['Mon','Tue','Wed','Thu','Fri','Sat'],tm={Maths:'Lalitha',Physics:'Senthil',Chemistry:'Kavya',Biology:'Deepak',English:'Anitha'};
+  pg(`<div style="height:12px"></div>
+  <div style="padding:0 16px;display:flex;gap:8px;margin-bottom:12px">
+    <select class="inp" id="tt-syl" onchange="updateTT()" style="flex:1"><option value="cbse">🔵 CBSE</option><option value="intl">🟣 International</option><option value="state">🟢 State Board</option></select>
+    <select class="inp" id="tt-grade" onchange="updateTT()" style="width:90px">${[6,7,8,9,10,11,12].map(g=>`<option${g===10?' selected':''}>${g}</option>`).join('')}</select>
+  </div>
+  <div id="tt-info" style="margin:0 16px 12px;background:var(--blue-light);border-radius:var(--r-sm);padding:10px 14px;font-size:12px;color:#1d4ed8;font-weight:600">CBSE Grade 10 — Weekly Schedule (NCERT curriculum)</div>
+  <div style="overflow-x:auto;padding:0 16px;margin-bottom:16px">
+    <table class="ttbl" style="min-width:400px">
+      <thead><tr><th>Time</th>${days.map(d=>`<th>${d}</th>`).join('')}</tr></thead>
+      <tbody id="tt-body">
+        ${D.slots.map((slot,i)=>`<tr><td style="background:var(--navy);color:rgba(255,255,255,.8);font-size:10px;font-weight:600;white-space:nowrap">${slot}</td>${days.map(d=>{const day=Object.keys(D.tt)[days.indexOf(d)];const subj=D.tt[day]?.[i]||'—';if(subj==='—')return'<td></td>';return`<td><div class="tt-cell cbse" id="tt-c-${d}-${i}"><div>${subj}</div><div class="tt-teach">${tm[subj]||''}</div></div></td>`;}).join('')}</tr>`).join('')}
+      </tbody>
+    </table>
+  </div>`);
+  window.updateTT=function(){
+    const syl=document.getElementById('tt-syl').value,g=document.getElementById('tt-grade').value;
+    const colors={cbse:'color:#1d4ed8;background:#e0edff',intl:'color:#6d28d9;background:#ede9fe',state:'color:#059669;background:#dcfce7'};
+    document.getElementById('tt-info').style.cssText=`margin:0 16px 12px;border-radius:var(--r-sm);padding:10px 14px;font-size:12px;font-weight:600;${colors[syl]}`;
+    document.getElementById('tt-info').textContent=`${SYL[syl].label} Grade ${g} — Weekly Schedule (${SYL[syl].curriculum})`;
+    document.querySelectorAll('[id^="tt-c-"]').forEach(el=>{el.className=`tt-cell ${syl}`;});
+  };
+}
+
+// ── SETTINGS ──
+function rSettings(){
+  pg(`<div style="height:12px"></div>
+  <div class="card" style="margin:0 16px 12px"><div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:14px">Centre Information</div>
+    <div class="field-grp"><label class="inp-label">Centre Name</label><input class="inp" value="Durai Tuition Centre"></div>
+    <div class="field-grp"><label class="inp-label">Phone</label><input class="inp" value="+91 9876543200"></div>
+    <div class="field-grp"><label class="inp-label">Email</label><input class="inp" value="info@duraitc.com"></div>
+    <button class="btn btn-primary btn-full" onclick="toast('✅ Settings saved!')">Save</button>
+  </div>
+  <div class="card" style="margin:0 16px 12px"><div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:14px">Fee Structure</div>
+    ${['cbse','intl','state'].map(s=>`<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--bg)"><div style="display:flex;align-items:center;gap:8px">${sylBadge(s)}<span style="font-size:13px;font-weight:600">${SYL[s].label}</span></div><div style="display:flex;align-items:center;gap:6px"><span style="font-size:12px;color:var(--text2)">₹</span><input class="inp" type="number" value="${s==='cbse'?4500:s==='intl'?6000:3500}" style="width:80px;padding:6px 8px;font-size:13px"></div></div>`).join('')}
+    <button class="btn btn-primary btn-full" style="margin-top:12px" onclick="toast('✅ Fee structure saved!')">Save Fees</button>
+  </div>
+  <div class="card" style="margin:0 16px 12px"><div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:14px">AI Configuration</div>
+    <div class="field-grp"><label class="inp-label">Anthropic API Key</label><input class="inp" type="password" placeholder="sk-ant-..."></div>
+    <div class="field-grp"><label class="inp-label">Board-Aware Prompts</label>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:6px">
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer"><input type="checkbox" checked> NCERT context for CBSE students</label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer"><input type="checkbox" checked> IB curriculum for International</label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer"><input type="checkbox" checked> Samacheer for State Board</label>
+      </div>
+    </div>
+    <button class="btn btn-primary btn-full" onclick="toast('✅ AI configured!')">Save</button>
+  </div>
+  <div class="card" style="margin:0 16px 16px"><div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:14px">WhatsApp API</div>
+    <div class="field-grp"><label class="inp-label">Phone Number ID</label><input class="inp" placeholder="Meta Business Phone ID"></div>
+    <div class="field-grp"><label class="inp-label">Access Token</label><input class="inp" type="password" placeholder="WhatsApp Access Token"></div>
+    <button class="btn btn-primary btn-full" onclick="toast('✅ WhatsApp configured!')">Save</button>
+  </div>`);
+}
+
+// ── NOTIFICATIONS ──
+function rNotifications(){
+  pg(`<div style="height:12px"></div>
+  ${D.notifs.map(n=>{const colors={warn:'var(--amber-bg)',success:'var(--green-bg)',info:'var(--blue-light)',danger:'var(--red-bg)'};const borders={warn:'var(--amber)',success:'var(--green)',info:'var(--blue)',danger:'var(--red)'};const em={warn:'⚠️',success:'✅',info:'ℹ️',danger:'🚨'};return`<div style="display:flex;gap:12px;padding:12px 16px;border-bottom:1px solid var(--bg);background:white">
+    <div style="width:36px;height:36px;border-radius:10px;background:${colors[n.type]};display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">${em[n.type]}</div>
+    <div style="flex:1"><div style="font-size:13px;font-weight:600;color:var(--navy)">${n.title}</div><div style="font-size:12px;color:var(--text2);margin-top:2px">${n.desc}</div><div style="font-size:11px;color:var(--text3);margin-top:4px">${n.time}</div></div>
+  </div>`;}).join('')}
+  <div style="height:16px"></div>`);
+}
+
+// ══════════════════════════════════════════════════════
+// STUDENT FULL PROFILE PAGE (used when student logs in)
+// ══════════════════════════════════════════════════════
+function rStudentProfile(s){
+  if(!s){ pg('<div class="page-pad"><p style="color:var(--text2)">Student not found</p></div>'); return; }
+  const c=getCls(s.cid);
+  const m=D.marks[s.id]||{};
+  const myFees=D.fees.filter(f=>f.sid===s.id);
+  const myHW=[{title:'Solve Ex 5.3 Q1–Q15',sub:'Mathematics',due:'Jan 25',status:'pending'},{title:'Draw Chapter 6 diagrams',sub:'Biology',due:'Jan 26',status:'pending'}];
+  const attDays=22, presentDays=Math.round(s.att*attDays/100);
+
+  pg(`
+  <!-- HERO BANNER -->
+  <div style="background:linear-gradient(135deg,var(--navy),var(--navy3));padding:24px 16px 28px;position:relative">
+    <div style="display:flex;align-items:center;gap:14px">
+      <div style="width:62px;height:62px;border-radius:18px;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:white;flex-shrink:0">${initials(s.name)}</div>
+      <div>
+        <div style="font-size:11px;color:rgba(255,255,255,.6);margin-bottom:3px">Hello 👋 Welcome back</div>
+        <div style="font-size:20px;font-weight:800;color:white;line-height:1.2">${s.name}</div>
+        <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
+          ${sylBadge(s.syl)}
+          <span class="badge" style="background:rgba(255,255,255,.15);color:white">Grade ${c.grade}</span>
+          <span class="badge" style="background:rgba(255,255,255,.15);color:white">${SYL[s.syl].curriculum}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUICK STATS -->
+  <div class="stats-scroll">
+    <div class="stat-chip">
+      <div class="sc-val" style="color:${s.att>=75?'var(--green)':'var(--red)'}">${s.att}%</div>
+      <div class="sc-lbl">Attendance</div>
+      <div class="sc-bar"><div class="sc-fill" style="width:${s.att}%;background:${s.att>=75?'var(--green)':'var(--red)'}"></div></div>
+    </div>
+    <div class="stat-chip">
+      <div class="sc-val" style="color:${s.avg>=50?'var(--blue)':'var(--red)'}">${s.avg}%</div>
+      <div class="sc-lbl">Avg Marks</div>
+      <div class="sc-bar"><div class="sc-fill" style="width:${s.avg}%;background:var(--blue)"></div></div>
+    </div>
+    <div class="stat-chip">
+      <div class="sc-val" style="color:${s.fees==='paid'?'var(--green)':'var(--red)'}">
+        ${s.fees==='paid'?'Paid ✓':'Pending'}
+      </div>
+      <div class="sc-lbl">Fee Status</div>
+    </div>
+    <div class="stat-chip">
+      <div class="sc-val">${myHW.filter(h=>h.status==='pending').length}</div>
+      <div class="sc-lbl">Pending HW</div>
+    </div>
+  </div>
+
+  <!-- ATTENDANCE CARD -->
+  <div class="sec-head"><h3>My attendance</h3></div>
+  <div class="card" style="margin:0 16px 14px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+      <div style="text-align:center;flex:1">
+        <div style="font-size:28px;font-weight:800;color:${s.att>=75?'var(--green)':'var(--red)'}">${s.att}%</div>
+        <div style="font-size:11px;color:var(--text2);margin-top:2px">Overall</div>
+      </div>
+      <div style="width:1px;background:var(--border);height:40px"></div>
+      <div style="text-align:center;flex:1">
+        <div style="font-size:22px;font-weight:800;color:var(--green)">${presentDays}</div>
+        <div style="font-size:11px;color:var(--text2);margin-top:2px">Present</div>
+      </div>
+      <div style="width:1px;background:var(--border);height:40px"></div>
+      <div style="text-align:center;flex:1">
+        <div style="font-size:22px;font-weight:800;color:var(--red)">${attDays-presentDays}</div>
+        <div style="font-size:11px;color:var(--text2);margin-top:2px">Absent</div>
+      </div>
+    </div>
+    <div class="prog" style="height:8px">
+      <div class="prog-fill ${s.att>=75?'pf-green':'pf-red'}" style="width:${s.att}%"></div>
+    </div>
+    ${s.att<75?`<div style="margin-top:10px;padding:8px 12px;background:var(--red-bg);border-radius:var(--r-sm);font-size:12px;color:var(--red);font-weight:600">⚠️ Attendance below 75% — This may affect exam eligibility</div>`:`<div style="margin-top:8px;font-size:12px;color:var(--green);font-weight:500;text-align:center">✅ Good attendance — Keep it up!</div>`}
+  </div>
+
+  <!-- EXAM RESULTS -->
+  <div class="sec-head"><h3>My exam results</h3><button class="btn btn-xs btn-secondary" onclick="navTo('exams')">All exams</button></div>
+  ${Object.keys(m).length?
+    Object.entries(m).map(([ex,mk])=>{
+      const max=ex==='Quarterly'||ex==='Half Yearly'?100:ex==='Term Assess'?50:25;
+      const p=Math.round(mk/max*100);
+      const g=p>=90?'A+':p>=80?'A':p>=70?'B+':p>=60?'B':p>=50?'C':'F';
+      return`<div class="card" style="margin:0 16px 8px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="width:46px;height:46px;border-radius:12px;background:${p>=75?'var(--green-bg)':p>=50?'var(--amber-bg)':'var(--red-bg)'};display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0">
+            <div style="font-size:14px;font-weight:800;color:${p>=75?'var(--green)':p>=50?'var(--amber)':'var(--red)'}">${g}</div>
+          </div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:700;color:var(--navy)">${ex}</div>
+            <div style="font-size:12px;color:var(--text2);margin-top:2px">${mk} / ${max} marks &nbsp;•&nbsp; ${p}%</div>
+            <div class="prog" style="margin-top:6px">
+              <div class="prog-fill ${p>=75?'pf-green':p>=50?'pf-amber':'pf-red'}" style="width:${p}%"></div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    }).join('')
+    :`<div class="card" style="margin:0 16px 8px;text-align:center;padding:20px;color:var(--text2);font-size:13px">No exam results yet</div>`
+  }
+
+  <!-- HOMEWORK -->
+  <div class="sec-head" style="margin-top:6px"><h3>My homework</h3><button class="btn btn-xs btn-secondary" onclick="navTo('homework')">View all</button></div>
+  ${myHW.map(h=>`
+    <div class="card" style="margin:0 16px 8px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+        <div style="flex:1;margin-right:10px">
+          <div style="font-size:13px;font-weight:700;color:var(--navy)">${h.title}</div>
+          <div style="font-size:11px;color:var(--text2);margin-top:3px">${h.sub} &nbsp;•&nbsp; Due: ${h.due}</div>
+        </div>
+        <span class="badge ${h.status==='submitted'?'b-green':'b-amber'}">${h.status}</span>
+      </div>
+      ${h.status==='pending'?`<button class="btn btn-primary btn-sm btn-full" onclick="toast('✅ Homework submitted!')">Submit Homework</button>`:''}
+    </div>
+  `).join('')}
+
+  <!-- FEES -->
+  <div class="sec-head" style="margin-top:6px"><h3>My fees</h3></div>
+  ${myFees.length?myFees.map(f=>`
+    <div class="fee-row" style="margin:0 16px 8px">
+      <div class="fr-top">
+        <div>
+          <div class="fr-name">${f.month}</div>
+          <div class="fr-sub">${SYL[f.syl].label} &nbsp;•&nbsp; Due: ${f.due}</div>
+          <div style="margin-top:6px">${feeBadge(f.status)}</div>
+        </div>
+        <div style="text-align:right">
+          <div class="fr-amt">₹${f.paid.toLocaleString()}</div>
+          <div style="font-size:11px;color:var(--text3)">of ₹${f.amount.toLocaleString()}</div>
+        </div>
+      </div>
+      <div class="prog" style="margin-top:8px">
+        <div class="prog-fill ${f.status==='paid'?'pf-green':f.status==='overdue'?'pf-red':'pf-amber'}" style="width:${Math.round(f.paid/f.amount*100)}%"></div>
+      </div>
+      ${f.status!=='paid'?`<div style="margin-top:10px;font-size:12px;color:var(--red);font-weight:600">⚠️ ₹${(f.amount-f.paid).toLocaleString()} pending — Please pay by ${f.due}</div>`:''}
+    </div>
+  `).join(''):`<div class="card" style="margin:0 16px 8px;text-align:center;padding:16px;color:var(--green);font-size:13px;font-weight:600">✅ All fees paid</div>`}
+
+  <!-- STUDY MATERIALS -->
+  <div class="sec-head" style="margin-top:6px"><h3>Study materials for me</h3><button class="btn btn-xs btn-secondary" onclick="navTo('notes')">All notes</button></div>
+  ${D.notes.filter(n=>n.syl===s.syl).slice(0,2).map(n=>`
+    <div class="card" style="margin:0 16px 8px">
+      <div style="display:flex;gap:10px;align-items:center">
+        <div style="width:38px;height:38px;border-radius:10px;background:${s.syl==='cbse'?'#e0edff':s.syl==='intl'?'#ede9fe':'#dcfce7'};display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">📄</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:13px;font-weight:600;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${n.title}</div>
+          <div style="font-size:11px;color:var(--text2);margin-top:2px">${n.sub} &nbsp;•&nbsp; ${n.size}</div>
+        </div>
+        <button class="btn btn-primary btn-xs" onclick="toast('⬇ Downloading...')">Download</button>
+      </div>
+    </div>
+  `).join('')}
+
+  <!-- TIMETABLE TEASER -->
+  <div class="sec-head" style="margin-top:6px"><h3>Today's classes</h3><button class="btn btn-xs btn-secondary" onclick="navTo('timetable')">Full timetable</button></div>
+  <div class="card" style="margin:0 16px 16px">
+    ${['Mathematics','Physics','English','Chemistry'].map((sub,i)=>{
+      const times=['9:00–10:00','10:00–11:00','11:00–12:00','1:00–2:00'];
+      const teachers={Mathematics:'Mrs. Lalitha',Physics:'Mr. Senthil',Chemistry:'Mrs. Kavya',English:'Mrs. Anitha'};
+      const colors={Mathematics:'var(--blue)',Physics:'var(--purple)',Chemistry:'var(--green)',English:'var(--amber)'};
+      return`<div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:${i<3?'1px solid var(--bg)':'none'}">
+        <div style="width:4px;height:36px;border-radius:2px;background:${colors[sub]};flex-shrink:0"></div>
+        <div style="flex:1">
+          <div style="font-size:13px;font-weight:600;color:var(--navy)">${sub}</div>
+          <div style="font-size:11px;color:var(--text2)">${teachers[sub]} &nbsp;•&nbsp; ${times[i]}</div>
+        </div>
+      </div>`;
+    }).join('')}
+  </div>
+  `);
+}
+
+// ══════════════════════════════════════════════════════
+// PARENT CHILD PROFILE PAGE (used when parent logs in)
+// ══════════════════════════════════════════════════════
+function rParentChildProfile(s){
+  if(!s){ pg('<div class="page-pad"><p style="color:var(--text2)">Child not found</p></div>'); return; }
+  const c=getCls(s.cid);
+  const m=D.marks[s.id]||{};
+  const myFees=D.fees.filter(f=>f.sid===s.id);
+  const attDays=22, presentDays=Math.round(s.att*attDays/100);
+
+  pg(`
+  <!-- PARENT HERO -->
+  <div style="background:linear-gradient(135deg,var(--navy),var(--navy3));padding:24px 16px 28px">
+    <div style="font-size:11px;color:rgba(255,255,255,.6);margin-bottom:12px">Monitoring your child</div>
+    <div style="display:flex;align-items:center;gap:14px">
+      <div style="width:62px;height:62px;border-radius:18px;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:white;flex-shrink:0">${initials(s.name)}</div>
+      <div>
+        <div style="font-size:20px;font-weight:800;color:white">${s.name}</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.7);margin-top:4px">${c.name} &nbsp;•&nbsp; ${SYL[s.syl].curriculum}</div>
+        <div style="display:flex;gap:6px;margin-top:8px">${sylBadge(s.syl)}<span class="badge" style="background:rgba(255,255,255,.15);color:white">ID: ${s.id}</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERALL STATUS BANNER -->
+  <div style="margin:14px 16px;padding:14px 16px;border-radius:var(--r);background:${s.att>=75&&s.avg>=50?'var(--green-bg)':'var(--red-bg)'};border:1px solid ${s.att>=75&&s.avg>=50?'rgba(0,196,140,.25)':'rgba(239,68,68,.25)'}">
+    <div style="font-size:14px;font-weight:700;color:${s.att>=75&&s.avg>=50?'var(--green)':'var(--red)'}">
+      ${s.att>=75&&s.avg>=50?'✅ All good — Your child is doing well!':'⚠️ Attention needed — Please review below'}
+    </div>
+    <div style="font-size:12px;color:var(--text2);margin-top:4px">Attendance ${s.att}% &nbsp;•&nbsp; Avg Marks ${s.avg}% &nbsp;•&nbsp; Fees ${s.fees}</div>
+  </div>
+
+  <!-- QUICK STATS -->
+  <div class="stats-scroll">
+    <div class="stat-chip">
+      <div class="sc-val" style="color:${s.att>=75?'var(--green)':'var(--red)'}">${s.att}%</div>
+      <div class="sc-lbl">Attendance</div>
+      <div class="sc-bar"><div class="sc-fill" style="width:${s.att}%;background:${s.att>=75?'var(--green)':'var(--red)'}"></div></div>
+    </div>
+    <div class="stat-chip">
+      <div class="sc-val" style="color:var(--blue)">${s.avg}%</div>
+      <div class="sc-lbl">Avg Marks</div>
+      <div class="sc-bar"><div class="sc-fill pf-blue" style="width:${s.avg}%"></div></div>
+    </div>
+    <div class="stat-chip">
+      <div class="sc-val" style="color:${s.fees==='paid'?'var(--green)':'var(--red)'}">${s.fees==='paid'?'Paid ✓':'Pending'}</div>
+      <div class="sc-lbl">Fee Status</div>
+    </div>
+    <div class="stat-chip">
+      <div class="sc-val">${presentDays}/${attDays}</div>
+      <div class="sc-lbl">Days Present</div>
+    </div>
+  </div>
+
+  <!-- ATTENDANCE DETAIL -->
+  <div class="sec-head"><h3>Attendance</h3></div>
+  <div class="card" style="margin:0 16px 14px">
+    <div style="display:flex;justify-content:space-around;margin-bottom:14px">
+      <div style="text-align:center">
+        <div style="font-size:26px;font-weight:800;color:${s.att>=75?'var(--green)':'var(--red)'}">${s.att}%</div>
+        <div style="font-size:11px;color:var(--text2)">Overall</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:26px;font-weight:800;color:var(--green)">${presentDays}</div>
+        <div style="font-size:11px;color:var(--text2)">Present</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:26px;font-weight:800;color:var(--red)">${attDays-presentDays}</div>
+        <div style="font-size:11px;color:var(--text2)">Absent</div>
+      </div>
+    </div>
+    <div class="prog" style="height:10px;margin-bottom:8px">
+      <div class="prog-fill ${s.att>=75?'pf-green':'pf-red'}" style="width:${s.att}%"></div>
+    </div>
+    ${s.att<75
+      ?`<div style="padding:10px 12px;background:var(--red-bg);border-radius:var(--r-sm);font-size:12px;color:var(--red);font-weight:600">⚠️ Below 75% — Please contact the centre immediately</div>`
+      :s.att<85
+      ?`<div style="padding:10px 12px;background:var(--amber-bg);border-radius:var(--r-sm);font-size:12px;color:#b45309;font-weight:600">📊 Attendance is average — Encourage regular attendance</div>`
+      :`<div style="padding:10px 12px;background:var(--green-bg);border-radius:var(--r-sm);font-size:12px;color:#059669;font-weight:600">✅ Excellent attendance — Keep it up!</div>`
+    }
+  </div>
+
+  <!-- EXAM RESULTS -->
+  <div class="sec-head"><h3>Exam results</h3></div>
+  ${Object.keys(m).length
+    ? Object.entries(m).map(([ex,mk])=>{
+        const max=ex==='Quarterly'||ex==='Half Yearly'?100:ex==='Term Assess'?50:25;
+        const p=Math.round(mk/max*100);
+        const g=p>=90?'A+':p>=80?'A':p>=70?'B+':p>=60?'B':p>=50?'C':'F';
+        return`<div class="card" style="margin:0 16px 8px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:50px;height:50px;border-radius:13px;background:${p>=75?'var(--green-bg)':p>=50?'var(--amber-bg)':'var(--red-bg)'};display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0">
+              <div style="font-size:16px;font-weight:800;color:${p>=75?'var(--green)':p>=50?'var(--amber)':'var(--red)'}">${g}</div>
+              <div style="font-size:9px;color:var(--text2)">${p}%</div>
+            </div>
+            <div style="flex:1">
+              <div style="font-size:13px;font-weight:700;color:var(--navy)">${ex}</div>
+              <div style="font-size:12px;color:var(--text2);margin-top:1px">${mk} out of ${max} marks</div>
+              <div class="prog" style="margin-top:6px">
+                <div class="prog-fill ${p>=75?'pf-green':p>=50?'pf-amber':'pf-red'}" style="width:${p}%"></div>
+              </div>
+            </div>
+          </div>
+        </div>`;
+      }).join('')
+    : `<div class="card" style="margin:0 16px 8px;text-align:center;padding:20px;color:var(--text2);font-size:13px">No results published yet</div>`
+  }
+
+  <!-- FEES -->
+  <div class="sec-head" style="margin-top:6px"><h3>Fee status</h3></div>
+  ${myFees.length?myFees.map(f=>`
+    <div class="fee-row" style="margin:0 16px 8px">
+      <div class="fr-top">
+        <div>
+          <div class="fr-name">${f.month}</div>
+          <div class="fr-sub">${SYL[f.syl].label} &nbsp;•&nbsp; Due: ${f.due}</div>
+          <div style="margin-top:6px">${feeBadge(f.status)}</div>
+        </div>
+        <div style="text-align:right">
+          <div class="fr-amt" style="color:${f.status==='paid'?'var(--green)':f.status==='overdue'?'var(--red)':'var(--amber)'}">₹${f.paid.toLocaleString()}</div>
+          <div style="font-size:11px;color:var(--text3)">of ₹${f.amount.toLocaleString()}</div>
+        </div>
+      </div>
+      <div class="prog" style="margin-top:8px">
+        <div class="prog-fill ${f.status==='paid'?'pf-green':f.status==='overdue'?'pf-red':'pf-amber'}" style="width:${Math.round(f.paid/f.amount*100)}%"></div>
+      </div>
+      ${f.status!=='paid'?`<div style="margin-top:10px;display:flex;gap:8px"><button class="btn btn-primary btn-sm" style="flex:1" onclick="toast('📱 Payment reminder sent!')">Send Reminder</button><button class="btn btn-secondary btn-sm" onclick="toast('🧾 Receipt downloaded!')">Receipt</button></div>`:''}
+    </div>
+  `).join(''):`<div class="card" style="margin:0 16px 8px;text-align:center;padding:16px;color:var(--green);font-size:13px;font-weight:600">✅ All fees cleared</div>`}
+
+  <!-- RECENT WHATSAPP ALERTS -->
+  <div class="sec-head" style="margin-top:6px"><h3>Recent alerts from centre</h3></div>
+  ${D.waLogs.slice(0,3).map(w=>`
+    <div class="wa-item" style="margin:0 16px 8px">
+      <div class="wa-to">📱 Durai Tuition Centre</div>
+      <div class="wa-msg">${w.msg}</div>
+      <div class="wa-foot"><span class="wa-time">${w.time}</span><span class="wa-stat">✓✓ ${w.status}</span></div>
+    </div>
+  `).join('')}
+
+  <!-- CONTACT CENTRE -->
+  <div style="padding:16px 16px 28px">
+    <div style="background:var(--bg);border-radius:var(--r);padding:16px;text-align:center;margin-bottom:12px">
+      <div style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:4px">Need help?</div>
+      <div style="font-size:12px;color:var(--text2);margin-bottom:12px">Contact Durai Tuition Centre directly</div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-primary" style="flex:1" onclick="toast('📞 Calling +91 9876543200...')">📞 Call Centre</button>
+        <button class="btn btn-secondary" style="flex:1" onclick="toast('💬 Opening WhatsApp...')">💬 WhatsApp</button>
+      </div>
+    </div>
+  </div>
+  `);
+}
+
+</script>
+</body>
+</html>
