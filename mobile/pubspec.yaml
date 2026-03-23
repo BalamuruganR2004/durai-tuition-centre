@@ -1,0 +1,58 @@
+name: durai_tuition
+description: Durai Tuition Centre Management App
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State management
+  provider: ^6.1.2
+
+  # Networking
+  dio: ^5.4.1
+
+  # Secure storage for JWT tokens
+  flutter_secure_storage: ^9.0.0
+
+  # Charts
+  fl_chart: ^0.66.2
+
+  # Image loading
+  cached_network_image: ^3.3.1
+
+  # File operations
+  file_picker: ^6.1.1
+  open_file: ^3.3.2
+
+  # Date formatting
+  intl: ^0.19.0
+
+  # Notifications
+  flutter_local_notifications: ^16.3.2
+  firebase_messaging: ^14.7.10
+  firebase_core: ^2.24.2
+
+  # UI
+  google_fonts: ^6.1.0
+  shimmer: ^3.0.0
+  lottie: ^3.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/lottie/
